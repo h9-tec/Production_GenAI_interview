@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480">
+  <defs>
+    <linearGradient id="scBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="scGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="scOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EA580C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="scRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC2626;stop-opacity:1" />
+    </linearGradient>
+    <filter id="scShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="scArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="480" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1e293b">Semantic Caching Architecture</text>
+  
+  <!-- Query Input -->
+  <rect x="30" y="80" width="100" height="50" rx="8" fill="url(#scBlue)" filter="url(#scShadow)"/>
+  <text x="80" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white" font-weight="bold">Query</text>
+  
+  <!-- Arrow -->
+  <path d="M130 105 L170 105" stroke="#64748b" stroke-width="2" marker-end="url(#scArrow)"/>
+  
+  <!-- Embedding -->
+  <rect x="180" y="80" width="100" height="50" rx="8" fill="url(#scGreen)" filter="url(#scShadow)"/>
+  <text x="230" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" font-weight="bold">Embed</text>
+  <text x="230" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Query</text>
+  
+  <!-- Arrow -->
+  <path d="M280 105 L320 105" stroke="#64748b" stroke-width="2" marker-end="url(#scArrow)"/>
+  
+  <!-- Cache Lookup -->
+  <rect x="330" y="70" width="140" height="70" rx="8" fill="url(#scOrange)" filter="url(#scShadow)"/>
+  <text x="400" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" font-weight="bold">Semantic</text>
+  <text x="400" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" font-weight="bold">Cache Lookup</text>
+  <text x="400" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">similarity > 0.85?</text>
+  
+  <!-- Decision Diamond -->
+  <polygon points="540,105 580,75 620,105 580,135" fill="white" stroke="#64748b" stroke-width="2"/>
+  <text x="580" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#475569">Hit?</text>
+  
+  <!-- Arrow to decision -->
+  <path d="M470 105 L540 105" stroke="#64748b" stroke-width="2"/>
+  
+  <!-- Cache Hit Path -->
+  <path d="M620 105 L680 105" stroke="#10B981" stroke-width="2" marker-end="url(#scArrow)"/>
+  <text x="650" y="95" font-family="Arial, sans-serif" font-size="10" fill="#10B981">Yes</text>
+  
+  <rect x="690" y="80" width="120" height="50" rx="8" fill="url(#scGreen)" filter="url(#scShadow)"/>
+  <text x="750" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" font-weight="bold">Return</text>
+  <text x="750" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" font-weight="bold">Cached</text>
+  
+  <!-- Cache Miss Path -->
+  <path d="M580 135 L580 180 L330 180" stroke="#EF4444" stroke-width="2"/>
+  <text x="600" y="160" font-family="Arial, sans-serif" font-size="10" fill="#EF4444">No</text>
+  
+  <rect x="180" y="155" width="150" height="50" rx="8" fill="url(#scRed)" filter="url(#scShadow)"/>
+  <text x="255" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" font-weight="bold">Full RAG Pipeline</text>
+  <text x="255" y="192" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Retrieve + Generate</text>
+  
+  <!-- Update cache -->
+  <path d="M255 205 L255 230 L400 230 L400 140" stroke="#64748b" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#scArrow)"/>
+  <text x="330" y="245" font-family="Arial, sans-serif" font-size="9" fill="#64748b">Update cache</text>
+  
+  <!-- Comparison Table -->
+  <rect x="30" y="280" width="400" height="180" rx="12" fill="white" stroke="#e2e8f0" stroke-width="2" filter="url(#scShadow)"/>
+  <text x="230" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#1e293b" font-weight="bold">Exact vs Semantic Caching</text>
+  
+  <!-- Table -->
+  <rect x="50" y="325" width="120" height="25" fill="#f1f5f9"/>
+  <rect x="170" y="325" width="120" height="25" fill="#f1f5f9"/>
+  <rect x="290" y="325" width="120" height="25" fill="#f1f5f9"/>
+  
+  <text x="110" y="342" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#475569" font-weight="bold">Aspect</text>
+  <text x="230" y="342" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#475569" font-weight="bold">Exact Match</text>
+  <text x="350" y="342" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#475569" font-weight="bold">Semantic</text>
+  
+  <text x="110" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e293b">Hit Rate</text>
+  <text x="230" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#dc2626">5-15%</text>
+  <text x="350" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#16a34a">40-70%</text>
+  
+  <text x="110" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e293b">False Positives</text>
+  <text x="230" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#16a34a">None</text>
+  <text x="350" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f59e0b">Possible</text>
+  
+  <text x="110" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e293b">Complexity</text>
+  <text x="230" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#16a34a">Simple</text>
+  <text x="350" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f59e0b">Medium</text>
+  
+  <text x="110" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e293b">Latency</text>
+  <text x="230" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#16a34a">&lt;1ms</text>
+  <text x="350" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f59e0b">5-20ms</text>
+  
+  <!-- Cost Savings Box -->
+  <rect x="470" y="280" width="400" height="180" rx="12" fill="white" stroke="#e2e8f0" stroke-width="2" filter="url(#scShadow)"/>
+  <text x="670" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#1e293b" font-weight="bold">Real-World Impact</text>
+  
+  <rect x="490" y="330" width="360" height="60" rx="8" fill="#D1FAE5" stroke="#10B981" stroke-width="2"/>
+  <text x="670" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#065F46" font-weight="bold">$52K → $4.8K monthly</text>
+  <text x="670" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#047857">90% cost reduction with semantic caching</text>
+  
+  <text x="490" y="415" font-family="Arial, sans-serif" font-size="11" fill="#475569">• 70% of queries were variations of same questions</text>
+  <text x="490" y="435" font-family="Arial, sans-serif" font-size="11" fill="#475569">• Pre-warming based on yesterday's patterns</text>
+  <text x="490" y="455" font-family="Arial, sans-serif" font-size="11" fill="#475569">• Dialect normalization for Arabic variations</text>
+</svg>
