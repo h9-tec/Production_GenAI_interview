@@ -1,103 +1,124 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
   <defs>
-    <linearGradient id="hsBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+    <linearGradient id="darkGrad" x1="0%" y1="0%" x2="100%" y2="100%" gradientTransform="rotate(135)">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e1b4b;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="hsOrange" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#EA580C;stop-opacity:1" />
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="hsGreen" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="hsPurple" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34d399;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
     </linearGradient>
-    <filter id="hsShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
-    </filter>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c084fc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="indigoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#818cf8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
+    </linearGradient>
     <marker id="hsArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#64748b"/>
+      <polygon points="0 0, 10 3.5, 0 7" fill="#475569"/>
     </marker>
   </defs>
-  
+
   <!-- Background -->
-  <rect width="900" height="450" fill="#f8fafc"/>
-  
+  <rect width="900" height="450" fill="#0f172a"/>
+  <rect width="900" height="450" fill="url(#darkGrad)"/>
+
   <!-- Title -->
-  <text x="450" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1e293b">Hybrid Search &amp; Reranking Pipeline</text>
-  
+  <text x="450" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#f1f5f9">Hybrid Search &amp; Reranking Pipeline</text>
+
+  <!-- ===== PIPELINE FLOW (Top) ===== -->
+
   <!-- Query Input -->
-  <rect x="30" y="80" width="120" height="60" rx="10" fill="url(#hsBlue)" filter="url(#hsShadow)"/>
-  <text x="90" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white" font-weight="bold">Query</text>
-  
+  <rect x="30" y="75" width="120" height="60" rx="16" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <rect x="30" y="75" width="120" height="24" rx="16" fill="url(#skyGrad)"/>
+  <rect x="30" y="87" width="120" height="12" fill="url(#skyGrad)"/>
+  <text x="90" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#f1f5f9" font-weight="bold">Query</text>
+
   <!-- Split arrow -->
-  <path d="M150 110 L200 110" stroke="#64748b" stroke-width="2"/>
-  <path d="M200 110 L200 70" stroke="#64748b" stroke-width="2"/>
-  <path d="M200 110 L200 150" stroke="#64748b" stroke-width="2"/>
-  <path d="M200 70 L240 70" stroke="#64748b" stroke-width="2" marker-end="url(#hsArrow)"/>
-  <path d="M200 150 L240 150" stroke="#64748b" stroke-width="2" marker-end="url(#hsArrow)"/>
-  
+  <path d="M150 105 L200 105" stroke="#475569" stroke-width="2"/>
+  <path d="M200 105 L200 70" stroke="#475569" stroke-width="2"/>
+  <path d="M200 105 L200 145" stroke="#475569" stroke-width="2"/>
+  <path d="M200 70 L240 70" stroke="#475569" stroke-width="2" marker-end="url(#hsArrow)"/>
+  <path d="M200 145 L240 145" stroke="#475569" stroke-width="2" marker-end="url(#hsArrow)"/>
+
   <!-- Dense Retrieval -->
-  <rect x="250" y="40" width="150" height="60" rx="10" fill="url(#hsOrange)" filter="url(#hsShadow)"/>
-  <text x="325" y="65" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white" font-weight="bold">Dense Retrieval</text>
-  <text x="325" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Vector Search</text>
-  
+  <rect x="250" y="40" width="150" height="60" rx="16" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+  <rect x="250" y="40" width="150" height="22" rx="16" fill="url(#amberGrad)"/>
+  <rect x="250" y="52" width="150" height="10" fill="url(#amberGrad)"/>
+  <text x="325" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">Dense Retrieval</text>
+  <text x="325" y="89" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Vector Search</text>
+
   <!-- Sparse Retrieval -->
-  <rect x="250" y="120" width="150" height="60" rx="10" fill="url(#hsGreen)" filter="url(#hsShadow)"/>
-  <text x="325" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white" font-weight="bold">Sparse Retrieval</text>
-  <text x="325" y="162" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">BM25 / Keywords</text>
-  
+  <rect x="250" y="118" width="150" height="60" rx="16" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+  <rect x="250" y="118" width="150" height="22" rx="16" fill="url(#emeraldGrad)"/>
+  <rect x="250" y="130" width="150" height="10" fill="url(#emeraldGrad)"/>
+  <text x="325" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">Sparse Retrieval</text>
+  <text x="325" y="167" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">BM25 / Keywords</text>
+
   <!-- Arrows to fusion -->
-  <path d="M400 70 L450 70 L450 110 L480 110" stroke="#64748b" stroke-width="2"/>
-  <path d="M400 150 L450 150 L450 110 L480 110" stroke="#64748b" stroke-width="2" marker-end="url(#hsArrow)"/>
-  
+  <path d="M400 70 L450 70 L450 107 L480 107" stroke="#475569" stroke-width="2"/>
+  <path d="M400 148 L450 148 L450 107 L480 107" stroke="#475569" stroke-width="2" marker-end="url(#hsArrow)"/>
+
   <!-- Score Fusion -->
-  <rect x="490" y="75" width="140" height="70" rx="10" fill="url(#hsPurple)" filter="url(#hsShadow)"/>
-  <text x="560" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white" font-weight="bold">Score Fusion</text>
-  <text x="560" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">RRF / Weighted</text>
-  <text x="560" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#E9D5FF">Top 100 candidates</text>
-  
+  <rect x="490" y="72" width="140" height="70" rx="16" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
+  <rect x="490" y="72" width="140" height="22" rx="16" fill="url(#purpleGrad)"/>
+  <rect x="490" y="84" width="140" height="10" fill="url(#purpleGrad)"/>
+  <text x="560" y="107" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">Score Fusion</text>
+  <text x="560" y="123" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">RRF / Weighted</text>
+  <text x="560" y="137" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#c084fc">Top 100 candidates</text>
+
   <!-- Arrow to reranker -->
-  <path d="M630 110 L680 110" stroke="#64748b" stroke-width="2" marker-end="url(#hsArrow)"/>
-  
+  <path d="M630 107 L680 107" stroke="#475569" stroke-width="2" marker-end="url(#hsArrow)"/>
+
   <!-- Reranker -->
-  <rect x="690" y="75" width="140" height="70" rx="10" fill="url(#hsBlue)" filter="url(#hsShadow)"/>
-  <text x="760" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white" font-weight="bold">Reranker</text>
-  <text x="760" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Cross-Encoder</text>
-  <text x="760" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#BFDBFE">Top 10 results</text>
-  
-  <!-- Why Hybrid Section -->
-  <rect x="30" y="200" width="400" height="220" rx="12" fill="white" stroke="#e2e8f0" stroke-width="2" filter="url(#hsShadow)"/>
-  <text x="230" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#1e293b" font-weight="bold">Why Hybrid Search?</text>
-  
-  <text x="50" y="260" font-family="Arial, sans-serif" font-size="12" fill="#dc2626" font-weight="bold">Vector-Only Failures:</text>
-  <text x="50" y="280" font-family="Arial, sans-serif" font-size="11" fill="#64748b">• Exact match blindness (Error Code E-5023)</text>
-  <text x="50" y="298" font-family="Arial, sans-serif" font-size="11" fill="#64748b">• Rare term ignorance (product IDs, acronyms)</text>
-  <text x="50" y="316" font-family="Arial, sans-serif" font-size="11" fill="#64748b">• Negation confusion ("not working" ≈ "working")</text>
-  
-  <text x="50" y="345" font-family="Arial, sans-serif" font-size="12" fill="#16a34a" font-weight="bold">Hybrid Advantage:</text>
-  <text x="50" y="365" font-family="Arial, sans-serif" font-size="11" fill="#64748b">• BM25 and vector fail on DIFFERENT queries</text>
-  <text x="50" y="383" font-family="Arial, sans-serif" font-size="11" fill="#64748b">• Combined coverage compensates weaknesses</text>
-  
-  <rect x="50" y="400" width="360" height="25" rx="4" fill="#D1FAE5"/>
-  <text x="230" y="417" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#065F46" font-weight="bold">+15-30% precision improvement in enterprise deployments</text>
-  
-  <!-- RRF Formula Section -->
-  <rect x="470" y="200" width="400" height="220" rx="12" fill="white" stroke="#e2e8f0" stroke-width="2" filter="url(#hsShadow)"/>
-  <text x="670" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#1e293b" font-weight="bold">Reciprocal Rank Fusion (RRF)</text>
-  
-  <rect x="490" y="250" width="360" height="50" rx="8" fill="#f1f5f9"/>
-  <text x="670" y="280" text-anchor="middle" font-family="monospace" font-size="14" fill="#1e293b">RRF(doc) = Σ 1/(k + rank_i(doc))</text>
-  
-  <text x="490" y="325" font-family="Arial, sans-serif" font-size="11" fill="#475569">• k = constant (typically 60)</text>
-  <text x="490" y="345" font-family="Arial, sans-serif" font-size="11" fill="#475569">• rank_i = document's rank in system i</text>
-  <text x="490" y="365" font-family="Arial, sans-serif" font-size="11" fill="#475569">• No score normalization needed</text>
-  <text x="490" y="385" font-family="Arial, sans-serif" font-size="11" fill="#475569">• Favors docs appearing high in multiple systems</text>
-  
-  <rect x="490" y="400" width="360" height="25" rx="4" fill="#FEF3C7"/>
-  <text x="670" y="417" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#92400E" font-weight="bold">💡 Reranking: Highest ROI optimization for most RAG systems</text>
+  <rect x="690" y="72" width="140" height="70" rx="16" fill="#1e293b" stroke="#818cf8" stroke-width="1.5"/>
+  <rect x="690" y="72" width="140" height="22" rx="16" fill="url(#indigoGrad)"/>
+  <rect x="690" y="84" width="140" height="10" fill="url(#indigoGrad)"/>
+  <text x="760" y="107" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">Reranker</text>
+  <text x="760" y="123" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Cross-Encoder</text>
+  <text x="760" y="137" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#818cf8">Top 10 results</text>
+
+  <!-- ===== Why Hybrid Section (Bottom Left) ===== -->
+  <rect x="30" y="195" width="400" height="225" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="230" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">Why Hybrid Search?</text>
+
+  <text x="50" y="255" font-family="Arial, sans-serif" font-size="12" fill="#fb7185" font-weight="bold">Vector-Only Failures:</text>
+  <text x="50" y="277" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">&#x2022; Exact match blindness (Error Code E-5023)</text>
+  <text x="50" y="297" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">&#x2022; Rare term ignorance (product IDs, acronyms)</text>
+  <text x="50" y="317" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">&#x2022; Negation confusion ("not working" &#x2248; "working")</text>
+
+  <text x="50" y="345" font-family="Arial, sans-serif" font-size="12" fill="#34d399" font-weight="bold">Hybrid Advantage:</text>
+  <text x="50" y="365" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">&#x2022; BM25 and vector fail on DIFFERENT queries</text>
+  <text x="50" y="385" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">&#x2022; Combined coverage compensates weaknesses</text>
+
+  <!-- Green callout box -->
+  <rect x="50" y="398" width="360" height="25" rx="8" fill="#34d39915" stroke="#34d39960" stroke-width="1"/>
+  <text x="230" y="415" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#34d399" font-weight="bold">+15-30% precision improvement in enterprise deployments</text>
+
+  <!-- ===== RRF Formula Section (Bottom Right) ===== -->
+  <rect x="470" y="195" width="400" height="225" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="670" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">Reciprocal Rank Fusion (RRF)</text>
+
+  <!-- Formula box -->
+  <rect x="490" y="245" width="360" height="50" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="670" y="275" text-anchor="middle" font-family="monospace" font-size="14" fill="#f1f5f9">RRF(doc) = &#x03A3; 1/(k + rank_i(doc))</text>
+
+  <text x="490" y="322" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">&#x2022; k = constant (typically 60)</text>
+  <text x="490" y="342" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">&#x2022; rank_i = document's rank in system i</text>
+  <text x="490" y="362" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">&#x2022; No score normalization needed</text>
+  <text x="490" y="382" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">&#x2022; Favors docs appearing high in multiple systems</text>
+
+  <!-- Amber callout box -->
+  <rect x="490" y="396" width="360" height="25" rx="8" fill="#fbbf2415" stroke="#fbbf2460" stroke-width="1"/>
+  <text x="670" y="413" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fbbf24" font-weight="bold">&#x1F4A1; Reranking: Highest ROI optimization for most RAG systems</text>
 </svg>
