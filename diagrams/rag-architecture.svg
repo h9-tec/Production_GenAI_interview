@@ -1,163 +1,335 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580">
   <defs>
-    <linearGradient id="darkGrad" x1="0%" y1="0%" x2="100%" y2="100%" gradientTransform="rotate(135)">
-      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1e1b4b;stop-opacity:1" />
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#030712"/>
+      <stop offset="100%" stop-color="#0c1222"/>
     </linearGradient>
-    <linearGradient id="indigoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#818cf8;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
     </linearGradient>
-    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#34d399;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+    <linearGradient id="emeraldGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#10b981"/>
     </linearGradient>
-    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    <linearGradient id="indigoGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
     </linearGradient>
-    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:1" />
+    <linearGradient id="purpleGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#a855f7"/>
     </linearGradient>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#475569"/>
-    </marker>
+    <linearGradient id="amberGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="roseGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+    <linearGradient id="titleUnderline" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <linearGradient id="arrowSkyToSky" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="arrowSkyToEmerald" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="arrowEmeraldToIndigo" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="arrowIndigoToPurple" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <linearGradient id="arrowPurpleToAmber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="sectionUnderlineLeft" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="sectionUnderlineRight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
   </defs>
 
   <!-- Background -->
-  <rect width="900" height="500" fill="#0f172a"/>
-  <rect width="900" height="500" fill="url(#darkGrad)"/>
+  <rect width="1000" height="580" fill="url(#bgGrad)"/>
+  <rect width="1000" height="580" fill="#030712" opacity="0.3"/>
+
+  <!-- Star field decorative dots -->
+  <circle cx="45" cy="32" r="1" fill="#f1f5f9" opacity="0.15"/>
+  <circle cx="120" cy="85" r="1" fill="#f1f5f9" opacity="0.1"/>
+  <circle cx="230" cy="18" r="1" fill="#f1f5f9" opacity="0.18"/>
+  <circle cx="340" cy="55" r="1" fill="#f1f5f9" opacity="0.12"/>
+  <circle cx="480" cy="25" r="1" fill="#f1f5f9" opacity="0.16"/>
+  <circle cx="590" cy="70" r="1" fill="#f1f5f9" opacity="0.1"/>
+  <circle cx="710" cy="15" r="1" fill="#f1f5f9" opacity="0.14"/>
+  <circle cx="830" cy="48" r="1" fill="#f1f5f9" opacity="0.18"/>
+  <circle cx="920" cy="22" r="1" fill="#f1f5f9" opacity="0.11"/>
+  <circle cx="960" cy="90" r="1" fill="#f1f5f9" opacity="0.15"/>
+  <circle cx="75" cy="540" r="1" fill="#f1f5f9" opacity="0.13"/>
+  <circle cx="200" cy="560" r="1" fill="#f1f5f9" opacity="0.17"/>
+  <circle cx="400" cy="555" r="1" fill="#f1f5f9" opacity="0.1"/>
+  <circle cx="650" cy="570" r="1" fill="#f1f5f9" opacity="0.14"/>
+  <circle cx="850" cy="545" r="1" fill="#f1f5f9" opacity="0.12"/>
+  <circle cx="950" cy="530" r="1" fill="#f1f5f9" opacity="0.16"/>
+  <circle cx="15" cy="300" r="1" fill="#f1f5f9" opacity="0.11"/>
+  <circle cx="985" cy="280" r="1" fill="#f1f5f9" opacity="0.13"/>
 
   <!-- Title -->
-  <text x="450" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#f1f5f9">RAG Pipeline Architecture</text>
+  <text x="500" y="32" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#f1f5f9" text-anchor="middle">RAG Pipeline Architecture</text>
+  <rect x="470" y="38" width="60" height="2" rx="1" fill="url(#titleUnderline)"/>
 
-  <!-- ===== RETRIEVAL PIPELINE (Top) ===== -->
+  <!-- ============================================== -->
+  <!-- TOP SECTION - Main Pipeline Flow (6 nodes)     -->
+  <!-- ============================================== -->
 
-  <!-- User Query Box -->
-  <rect x="30" y="65" width="120" height="60" rx="16" fill="#1e293b" stroke="#818cf8" stroke-width="1.5"/>
-  <rect x="30" y="65" width="120" height="24" rx="16" fill="url(#indigoGrad)"/>
-  <rect x="30" y="77" width="120" height="12" fill="url(#indigoGrad)"/>
-  <text x="90" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#f1f5f9" font-weight="bold">User Query</text>
+  <!-- Node 1: User Query - sky pill -->
+  <!-- Glow -->
+  <rect x="28" y="67" width="134" height="59" rx="24" fill="#38bdf8" opacity="0.08"/>
+  <!-- Pill shape -->
+  <rect x="30" y="69" width="130" height="55" rx="20" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <!-- Icon: user silhouette -->
+  <circle cx="62" cy="90" r="8" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+  <rect x="53" y="101" width="18" height="8" rx="4" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="105" y="93" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f1f5f9" text-anchor="middle">User</text>
+  <text x="105" y="107" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f1f5f9" text-anchor="middle">Query</text>
 
-  <!-- Arrow 1 -->
-  <path d="M150 95 L190 95" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- Arrow 1→2 -->
+  <line x1="162" y1="96" x2="195" y2="88" stroke="url(#arrowSkyToSky)" stroke-width="1.5"/>
+  <polygon points="195,84 199,90 191,90" fill="#38bdf8"/>
 
-  <!-- Query Embedding -->
-  <rect x="200" y="65" width="120" height="60" rx="16" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-  <rect x="200" y="65" width="120" height="24" rx="16" fill="url(#emeraldGrad)"/>
-  <rect x="200" y="77" width="120" height="12" fill="url(#emeraldGrad)"/>
-  <text x="260" y="98" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">Query</text>
-  <text x="260" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#94a3b8">Embedding</text>
+  <!-- Node 2: Query Embedding - sky card -->
+  <rect x="198" y="57" width="134" height="59" rx="12" fill="#38bdf8" opacity="0.08"/>
+  <rect x="200" y="59" width="130" height="55" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <!-- Header bar -->
+  <rect x="200" y="59" width="130" height="18" rx="8" fill="url(#skyGrad)"/>
+  <rect x="200" y="69" width="130" height="8" fill="url(#skyGrad)"/>
+  <text x="265" y="72" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#030712" text-anchor="middle">Query Embedding</text>
+  <!-- Vector bars icon -->
+  <rect x="235" y="84" width="4" height="12" rx="1" fill="#38bdf8" opacity="0.7"/>
+  <rect x="243" y="88" width="4" height="18" rx="1" fill="#38bdf8" opacity="0.85"/>
+  <rect x="251" y="82" width="4" height="8" rx="1" fill="#38bdf8" opacity="0.6"/>
+  <text x="275" y="97" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="start">vec[384]</text>
 
-  <!-- Arrow 2 -->
-  <path d="M320 95 L360 95" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- Arrow 2→3 -->
+  <line x1="332" y1="88" x2="365" y2="96" stroke="url(#arrowSkyToEmerald)" stroke-width="1.5"/>
+  <polygon points="365,92 369,98 361,98" fill="#34d399"/>
 
-  <!-- Vector Database -->
-  <rect x="370" y="50" width="160" height="90" rx="16" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-  <rect x="370" y="50" width="160" height="26" rx="16" fill="url(#amberGrad)"/>
-  <rect x="370" y="64" width="160" height="12" fill="url(#amberGrad)"/>
-  <text x="450" y="87" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#f1f5f9" font-weight="bold">Vector Database</text>
-  <text x="450" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">Similarity Search</text>
-  <text x="450" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">Top-K Retrieval</text>
+  <!-- Node 3: Vector Search - emerald card -->
+  <rect x="368" y="67" width="134" height="59" rx="12" fill="#34d399" opacity="0.08"/>
+  <rect x="370" y="69" width="130" height="55" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <rect x="370" y="69" width="130" height="18" rx="8" fill="url(#emeraldGrad)"/>
+  <rect x="370" y="79" width="130" height="8" fill="url(#emeraldGrad)"/>
+  <text x="435" y="82" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#030712" text-anchor="middle">Vector Search</text>
+  <!-- Scatter plot dots -->
+  <circle cx="395" cy="96" r="2" fill="#34d399" opacity="0.8"/>
+  <circle cx="408" cy="103" r="2" fill="#34d399" opacity="0.6"/>
+  <circle cx="418" cy="92" r="2" fill="#34d399" opacity="0.9"/>
+  <circle cx="432" cy="108" r="2" fill="#34d399" opacity="0.5"/>
+  <circle cx="445" cy="95" r="2" fill="#34d399" opacity="0.7"/>
+  <circle cx="458" cy="101" r="2" fill="#34d399" opacity="0.65"/>
+  <circle cx="470" cy="90" r="2" fill="#34d399" opacity="0.85"/>
+  <circle cx="425" cy="114" r="2" fill="#34d399" opacity="0.4"/>
 
-  <!-- Arrow 3 -->
-  <path d="M530 95 L570 95" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- Arrow 3→4 -->
+  <line x1="502" y1="96" x2="535" y2="84" stroke="url(#arrowEmeraldToIndigo)" stroke-width="1.5"/>
+  <polygon points="535,80 539,86 531,86" fill="#818cf8"/>
 
-  <!-- Reranker -->
-  <rect x="580" y="65" width="120" height="60" rx="16" fill="#1e293b" stroke="#818cf8" stroke-width="1.5"/>
-  <rect x="580" y="65" width="120" height="24" rx="16" fill="url(#indigoGrad)"/>
-  <rect x="580" y="77" width="120" height="12" fill="url(#indigoGrad)"/>
-  <text x="640" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#f1f5f9" font-weight="bold">Reranker</text>
+  <!-- Node 4: Reranker - indigo card -->
+  <rect x="538" y="53" width="134" height="59" rx="12" fill="#818cf8" opacity="0.08"/>
+  <rect x="540" y="55" width="130" height="55" rx="8" fill="#0f172a" stroke="#818cf8" stroke-width="1.5"/>
+  <rect x="540" y="55" width="130" height="18" rx="8" fill="url(#indigoGrad)"/>
+  <rect x="540" y="65" width="130" height="8" fill="url(#indigoGrad)"/>
+  <text x="605" y="68" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#030712" text-anchor="middle">Reranker</text>
+  <!-- Sort/rank icon -->
+  <rect x="575" y="80" width="22" height="3" rx="1" fill="#818cf8" opacity="0.9"/>
+  <rect x="575" y="86" width="17" height="3" rx="1" fill="#818cf8" opacity="0.7"/>
+  <rect x="575" y="92" width="12" height="3" rx="1" fill="#818cf8" opacity="0.5"/>
+  <text x="620" y="90" font-family="Arial, sans-serif" font-size="8" fill="#94a3b8">score</text>
 
-  <!-- Arrow 4 -->
-  <path d="M700 95 L740 95" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- Arrow 4→5 -->
+  <line x1="672" y1="84" x2="705" y2="96" stroke="url(#arrowIndigoToPurple)" stroke-width="1.5"/>
+  <polygon points="705,92 709,98 701,98" fill="#c084fc"/>
 
-  <!-- Context Assembly -->
-  <rect x="750" y="65" width="120" height="60" rx="16" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-  <rect x="750" y="65" width="120" height="24" rx="16" fill="url(#emeraldGrad)"/>
-  <rect x="750" y="77" width="120" height="12" fill="url(#emeraldGrad)"/>
-  <text x="810" y="98" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">Context</text>
-  <text x="810" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#94a3b8">Assembly</text>
+  <!-- Node 5: Context Assembly - purple card -->
+  <rect x="708" y="67" width="134" height="59" rx="12" fill="#c084fc" opacity="0.08"/>
+  <rect x="710" y="69" width="130" height="55" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1.5"/>
+  <rect x="710" y="69" width="130" height="18" rx="8" fill="url(#purpleGrad)"/>
+  <rect x="710" y="79" width="130" height="8" fill="url(#purpleGrad)"/>
+  <text x="775" y="82" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#030712" text-anchor="middle">Context Assembly</text>
+  <!-- Stacked docs icon -->
+  <rect x="752" y="91" width="16" height="12" rx="2" fill="none" stroke="#c084fc" stroke-width="1" opacity="0.6"/>
+  <rect x="756" y="88" width="16" height="12" rx="2" fill="none" stroke="#c084fc" stroke-width="1" opacity="0.8"/>
+  <rect x="760" y="85" width="16" height="12" rx="2" fill="none" stroke="#c084fc" stroke-width="1"/>
+  <text x="792" y="97" font-family="Arial, sans-serif" font-size="8" fill="#94a3b8">merge</text>
 
-  <!-- ===== DOCUMENT INGESTION PIPELINE (Middle) ===== -->
-  <text x="450" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#94a3b8">Document Ingestion Pipeline</text>
+  <!-- Arrow 5→6 -->
+  <line x1="842" y1="96" x2="865" y2="82" stroke="url(#arrowPurpleToAmber)" stroke-width="1.5"/>
+  <polygon points="865,78 869,84 861,84" fill="#fbbf24"/>
 
-  <!-- Documents -->
-  <rect x="30" y="210" width="100" height="70" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <text x="80" y="242" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">Documents</text>
-  <text x="80" y="262" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">PDF, HTML, TXT</text>
+  <!-- Node 6: LLM Generation - amber card -->
+  <rect x="863" y="53" width="130" height="59" rx="12" fill="#fbbf24" opacity="0.08"/>
+  <rect x="865" y="55" width="126" height="55" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+  <rect x="865" y="55" width="126" height="18" rx="8" fill="url(#amberGrad)"/>
+  <rect x="865" y="65" width="126" height="8" fill="url(#amberGrad)"/>
+  <text x="928" y="68" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#030712" text-anchor="middle">LLM Generation</text>
+  <!-- Sparkle decorations (4 diamonds) -->
+  <polygon points="896,84 898,88 896,92 894,88" fill="#fbbf24" opacity="0.9"/>
+  <polygon points="910,80 911.5,83 910,86 908.5,83" fill="#fbbf24" opacity="0.7"/>
+  <polygon points="924,88 926,91 924,94 922,91" fill="#fbbf24" opacity="0.8"/>
+  <polygon points="940,82 941.5,85 940,88 938.5,85" fill="#fbbf24" opacity="0.6"/>
+  <text x="928" y="106" font-family="Arial, sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">response</text>
 
+  <!-- Connection from Vector DB to Node 3 (vertical) -->
+  <text x="435" y="145" font-family="Arial, sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">FAISS / Pinecone / Weaviate</text>
+
+  <!-- ============================================== -->
+  <!-- BOTTOM LEFT - Document Ingestion Pipeline      -->
+  <!-- ============================================== -->
+
+  <!-- Section title -->
+  <text x="260" y="185" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">Document Ingestion Pipeline</text>
+  <rect x="230" y="191" width="60" height="2" rx="1" fill="url(#sectionUnderlineLeft)"/>
+
+  <!-- Main card glow -->
+  <rect x="28" y="203" width="464" height="274" rx="16" fill="#38bdf8" opacity="0.08"/>
+  <!-- Main card -->
+  <rect x="30" y="205" width="460" height="270" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+
+  <!-- Step 1: Raw Documents -->
+  <rect x="50" y="220" width="420" height="50" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <!-- PDF icon -->
+  <rect x="62" y="228" width="22" height="28" rx="3" fill="none" stroke="#fb7185" stroke-width="1.2"/>
+  <text x="73" y="247" font-family="Arial, sans-serif" font-size="7" fill="#fb7185" text-anchor="middle">PDF</text>
+  <!-- HTML icon -->
+  <rect x="92" y="228" width="22" height="28" rx="3" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="103" y="247" font-family="Arial, sans-serif" font-size="7" fill="#38bdf8" text-anchor="middle">&lt;/&gt;</text>
+  <!-- API icon -->
+  <rect x="122" y="228" width="22" height="28" rx="3" fill="none" stroke="#34d399" stroke-width="1.2"/>
+  <text x="133" y="247" font-family="Arial, sans-serif" font-size="7" fill="#34d399" text-anchor="middle">API</text>
+  <text x="170" y="241" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f1f5f9">Raw Documents</text>
+  <text x="170" y="256" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">PDFs, web pages, APIs, databases</text>
+
+  <!-- Arrow down -->
+  <line x1="260" y1="272" x2="260" y2="285" stroke="#334155" stroke-width="1.5"/>
+  <polygon points="256,284 260,290 264,284" fill="#38bdf8"/>
+
+  <!-- Step 2: Preprocessing -->
+  <rect x="50" y="292" width="420" height="50" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <!-- Clean icon: broom-like -->
+  <rect x="65" y="305" width="28" height="3" rx="1" fill="#818cf8" opacity="0.8"/>
+  <rect x="65" y="311" width="22" height="3" rx="1" fill="#818cf8" opacity="0.6"/>
+  <rect x="65" y="317" width="16" height="3" rx="1" fill="#818cf8" opacity="0.4"/>
+  <text x="110" y="311" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f1f5f9">Preprocessing</text>
+  <text x="110" y="326" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Clean HTML, normalize text, extract metadata</text>
+
+  <!-- Arrow down -->
+  <line x1="260" y1="344" x2="260" y2="357" stroke="#334155" stroke-width="1.5"/>
+  <polygon points="256,356 260,362 264,356" fill="#34d399"/>
+
+  <!-- Step 3: Chunking -->
+  <rect x="50" y="364" width="420" height="50" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <!-- 1 rect becoming 3 rects -->
+  <rect x="62" y="374" width="28" height="22" rx="3" fill="none" stroke="#34d399" stroke-width="1.2"/>
   <!-- Arrow -->
-  <path d="M130 245 L170 245" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="97" y="389" font-family="Arial, sans-serif" font-size="10" fill="#334155">&gt;</text>
+  <rect x="106" y="374" width="10" height="22" rx="2" fill="none" stroke="#34d399" stroke-width="1.2"/>
+  <rect x="119" y="374" width="10" height="22" rx="2" fill="none" stroke="#34d399" stroke-width="1.2"/>
+  <rect x="132" y="374" width="10" height="22" rx="2" fill="none" stroke="#34d399" stroke-width="1.2"/>
+  <text x="160" y="383" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f1f5f9">Chunking</text>
+  <text x="160" y="398" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Split into overlapping chunks (512 tokens, 10-20% overlap)</text>
 
-  <!-- Chunking -->
-  <rect x="180" y="210" width="120" height="70" rx="16" fill="#1e293b" stroke="#818cf8" stroke-width="1.5"/>
-  <rect x="180" y="210" width="120" height="22" rx="16" fill="url(#indigoGrad)"/>
-  <rect x="180" y="222" width="120" height="10" fill="url(#indigoGrad)"/>
-  <text x="240" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">Chunking</text>
-  <text x="240" y="268" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Semantic/Recursive</text>
+  <!-- Arrow down -->
+  <line x1="260" y1="416" x2="260" y2="429" stroke="#334155" stroke-width="1.5"/>
+  <polygon points="256,428 260,434 264,428" fill="#fbbf24"/>
 
-  <!-- Arrow -->
-  <path d="M300 245 L340 245" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- Step 4: Embedding & Indexing -->
+  <rect x="50" y="436" width="420" height="50" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <!-- Vectors going into DB -->
+  <rect x="62" y="446" width="8" height="3" rx="1" fill="#fbbf24" opacity="0.9"/>
+  <rect x="62" y="452" width="12" height="3" rx="1" fill="#fbbf24" opacity="0.7"/>
+  <rect x="62" y="458" width="6" height="3" rx="1" fill="#fbbf24" opacity="0.5"/>
+  <text x="78" y="456" font-family="Arial, sans-serif" font-size="8" fill="#334155">&gt;</text>
+  <!-- DB cylinder -->
+  <ellipse cx="100" cy="449" rx="10" ry="4" fill="none" stroke="#fbbf24" stroke-width="1.2"/>
+  <line x1="90" y1="449" x2="90" y2="463" stroke="#fbbf24" stroke-width="1.2"/>
+  <line x1="110" y1="449" x2="110" y2="463" stroke="#fbbf24" stroke-width="1.2"/>
+  <ellipse cx="100" cy="463" rx="10" ry="4" fill="none" stroke="#fbbf24" stroke-width="1.2"/>
+  <text x="130" y="455" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f1f5f9">Embedding &amp; Indexing</text>
+  <text x="130" y="470" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Generate embeddings, store in vector database</text>
 
-  <!-- Embedding -->
-  <rect x="350" y="210" width="120" height="70" rx="16" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-  <rect x="350" y="210" width="120" height="22" rx="16" fill="url(#emeraldGrad)"/>
-  <rect x="350" y="222" width="120" height="10" fill="url(#emeraldGrad)"/>
-  <text x="410" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">Embedding</text>
-  <text x="410" y="268" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Vector Generation</text>
+  <!-- ============================================== -->
+  <!-- BOTTOM RIGHT - Key Architecture Decisions      -->
+  <!-- ============================================== -->
 
-  <!-- Arrow -->
-  <path d="M470 245 L510 245" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- Section title -->
+  <text x="740" y="185" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">Key Architecture Decisions</text>
+  <rect x="710" y="191" width="60" height="2" rx="1" fill="url(#sectionUnderlineRight)"/>
 
-  <!-- Indexing -->
-  <rect x="520" y="210" width="120" height="70" rx="16" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-  <rect x="520" y="210" width="120" height="22" rx="16" fill="url(#amberGrad)"/>
-  <rect x="520" y="222" width="120" height="10" fill="url(#amberGrad)"/>
-  <text x="580" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">Indexing</text>
-  <text x="580" y="268" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">HNSW / IVF</text>
+  <!-- Main card glow -->
+  <rect x="508" y="203" width="464" height="274" rx="16" fill="#818cf8" opacity="0.08"/>
+  <!-- Main card -->
+  <rect x="510" y="205" width="460" height="270" rx="12" fill="#0f172a" stroke="#818cf8" stroke-width="1.5"/>
 
-  <!-- Arrow to DB (dashed) -->
-  <path d="M580 210 L580 145 L450 145" stroke="#475569" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  <!-- Bullet 1 - emerald -->
+  <circle cx="535" cy="237" r="4" fill="#34d399"/>
+  <text x="550" y="234" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f1f5f9">Bi-encoder for retrieval, cross-encoder for reranking</text>
+  <text x="550" y="248" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Two-stage retrieval maximizes recall + precision</text>
 
-  <!-- ===== GENERATION PIPELINE (Bottom) ===== -->
-  <text x="450" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#94a3b8">Generation Pipeline</text>
+  <!-- Bullet 2 - sky -->
+  <circle cx="535" cy="277" r="4" fill="#38bdf8"/>
+  <text x="550" y="274" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f1f5f9">Chunk overlap: 10-20% prevents boundary info loss</text>
+  <text x="550" y="288" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Critical for maintaining semantic continuity between chunks</text>
 
-  <!-- Context + Query -->
-  <rect x="150" y="355" width="140" height="70" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <text x="220" y="387" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">Context + Query</text>
-  <text x="220" y="407" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Prompt Assembly</text>
+  <!-- Bullet 3 - amber -->
+  <circle cx="535" cy="317" r="4" fill="#fbbf24"/>
+  <text x="550" y="314" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f1f5f9">Metadata filtering before vector search: latency 5x</text>
+  <text x="550" y="328" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Pre-filter by source, date, category before ANN search</text>
 
-  <!-- Arrow -->
-  <path d="M290 390 L350 390" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- Bullet 4 - purple -->
+  <circle cx="535" cy="357" r="4" fill="#c084fc"/>
+  <text x="550" y="354" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f1f5f9">Citation tracking: map chunks back to source documents</text>
+  <text x="550" y="368" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Essential for trust, debugging, and compliance</text>
 
-  <!-- LLM -->
-  <rect x="360" y="350" width="180" height="80" rx="16" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-  <rect x="360" y="350" width="180" height="26" rx="16" fill="url(#skyGrad)"/>
-  <rect x="360" y="364" width="180" height="12" fill="url(#skyGrad)"/>
-  <text x="450" y="393" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">LLM</text>
-  <text x="450" y="415" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">GPT-4 / Claude / Llama</text>
+  <!-- Bullet 5 - indigo -->
+  <circle cx="535" cy="397" r="4" fill="#818cf8"/>
+  <text x="550" y="394" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f1f5f9">Streaming response while retrieving improves UX</text>
+  <text x="550" y="408" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Start generating as soon as first chunks arrive</text>
 
-  <!-- Arrow -->
-  <path d="M540 390 L600 390" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- Connection diagram: small flow icon -->
+  <rect x="530" y="425" width="420" height="38" rx="6" fill="#0f172a" stroke="#334155" stroke-width="0.8"/>
+  <text x="545" y="441" font-family="Arial, sans-serif" font-size="8" fill="#94a3b8">Latency budget:</text>
+  <!-- Latency bars -->
+  <rect x="625" y="433" width="60" height="8" rx="2" fill="#38bdf8" opacity="0.5"/>
+  <text x="630" y="440" font-family="Arial, sans-serif" font-size="6" fill="#f1f5f9">Embed 20ms</text>
+  <rect x="688" y="433" width="80" height="8" rx="2" fill="#34d399" opacity="0.5"/>
+  <text x="693" y="440" font-family="Arial, sans-serif" font-size="6" fill="#f1f5f9">Search 50ms</text>
+  <rect x="771" y="433" width="45" height="8" rx="2" fill="#818cf8" opacity="0.5"/>
+  <text x="776" y="440" font-family="Arial, sans-serif" font-size="6" fill="#f1f5f9">Rank 30ms</text>
+  <rect x="819" y="433" width="120" height="8" rx="2" fill="#fbbf24" opacity="0.5"/>
+  <text x="824" y="440" font-family="Arial, sans-serif" font-size="6" fill="#030712">LLM 500-2000ms</text>
+  <text x="625" y="455" font-family="Arial, sans-serif" font-size="7" fill="#94a3b8">Total: 600-2100ms end-to-end (p50-p99)</text>
 
-  <!-- Response -->
-  <rect x="610" y="355" width="140" height="70" rx="16" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-  <rect x="610" y="355" width="140" height="22" rx="16" fill="url(#emeraldGrad)"/>
-  <rect x="610" y="367" width="140" height="10" fill="url(#emeraldGrad)"/>
-  <text x="680" y="393" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#f1f5f9" font-weight="bold">Response</text>
-  <text x="680" y="413" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">+ Citations</text>
+  <!-- ============================================== -->
+  <!-- BOTTOM CALLOUT BAR                             -->
+  <!-- ============================================== -->
+  <rect x="30" y="498" width="940" height="42" rx="8" fill="#fbbf24" fill-opacity="0.08" stroke="#fbbf24" stroke-opacity="0.4" stroke-width="1.5"/>
+  <rect x="44" y="513" width="4" height="14" rx="1" fill="#fbbf24"/>
+  <text x="60" y="525" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fbbf24">90% of agentic RAG projects failed in production in 2024 -- start with naive RAG first</text>
 
-  <!-- Connection from Context Assembly to Generation (dashed) -->
-  <path d="M810 125 L810 340 L680 340 L680 355" stroke="#475569" stroke-width="2" stroke-dasharray="5,5"/>
-
-  <!-- Stats Box (amber callout) -->
-  <rect x="700" y="210" width="170" height="90" rx="16" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5" stroke-opacity="0.4"/>
-  <rect x="700" y="210" width="170" height="26" rx="16" fill="url(#amberGrad)" fill-opacity="0.15"/>
-  <rect x="700" y="226" width="170" height="8" fill="url(#amberGrad)" fill-opacity="0.15"/>
-  <text x="785" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#fbbf24" font-weight="bold">Key Stats</text>
-  <text x="785" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">80% failures from chunking</text>
-  <text x="785" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Hybrid search: +15-30%</text>
-  <text x="785" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Reranking: highest ROI</text>
+  <!-- Subtle bottom border accent -->
+  <rect x="30" y="552" width="940" height="1" rx="0.5" fill="#334155" opacity="0.3"/>
+  <text x="500" y="570" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle" opacity="0.6">RAG Pipeline Architecture | Production GenAI</text>
 </svg>

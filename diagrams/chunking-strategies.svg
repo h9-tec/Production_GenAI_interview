@@ -1,160 +1,346 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600">
   <defs>
-    <linearGradient id="darkGrad" x1="0%" y1="0%" x2="100%" y2="100%" gradientTransform="rotate(135)">
-      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1e1b4b;stop-opacity:1" />
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#030712"/>
+      <stop offset="100%" stop-color="#0c1222"/>
     </linearGradient>
-    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:1" />
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
     </linearGradient>
-    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#34d399;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+    <linearGradient id="emeraldGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#10b981"/>
     </linearGradient>
-    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#c084fc;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    <linearGradient id="purpleGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#a855f7"/>
     </linearGradient>
-    <linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#fb7185;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#f43f5e;stop-opacity:1" />
+    <linearGradient id="roseGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="indigoGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="titleUnderline" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+    <linearGradient id="sectionUnderlineRose" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <linearGradient id="sectionUnderlineIndigo" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
     </linearGradient>
   </defs>
 
   <!-- Background -->
-  <rect width="900" height="550" fill="#0f172a"/>
-  <rect width="900" height="550" fill="url(#darkGrad)"/>
+  <rect width="1000" height="600" fill="url(#bgGrad)"/>
+  <rect width="1000" height="600" fill="#030712" opacity="0.3"/>
+
+  <!-- Star field -->
+  <circle cx="52" cy="28" r="1" fill="#f1f5f9" opacity="0.15"/>
+  <circle cx="140" cy="72" r="1" fill="#f1f5f9" opacity="0.12"/>
+  <circle cx="260" cy="14" r="1" fill="#f1f5f9" opacity="0.18"/>
+  <circle cx="370" cy="45" r="1" fill="#f1f5f9" opacity="0.1"/>
+  <circle cx="500" cy="20" r="1" fill="#f1f5f9" opacity="0.16"/>
+  <circle cx="620" cy="58" r="1" fill="#f1f5f9" opacity="0.11"/>
+  <circle cx="740" cy="12" r="1" fill="#f1f5f9" opacity="0.14"/>
+  <circle cx="860" cy="42" r="1" fill="#f1f5f9" opacity="0.17"/>
+  <circle cx="950" cy="25" r="1" fill="#f1f5f9" opacity="0.13"/>
+  <circle cx="30" cy="580" r="1" fill="#f1f5f9" opacity="0.12"/>
+  <circle cx="180" cy="590" r="1" fill="#f1f5f9" opacity="0.15"/>
+  <circle cx="420" cy="585" r="1" fill="#f1f5f9" opacity="0.1"/>
+  <circle cx="680" cy="592" r="1" fill="#f1f5f9" opacity="0.14"/>
+  <circle cx="880" cy="578" r="1" fill="#f1f5f9" opacity="0.16"/>
+  <circle cx="970" cy="560" r="1" fill="#f1f5f9" opacity="0.11"/>
+  <circle cx="10" cy="300" r="1" fill="#f1f5f9" opacity="0.13"/>
+  <circle cx="990" cy="310" r="1" fill="#f1f5f9" opacity="0.12"/>
 
   <!-- Title -->
-  <text x="450" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#f1f5f9">Chunking Strategies Comparison</text>
+  <text x="500" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#f1f5f9" text-anchor="middle">Chunking Strategies Comparison</text>
+  <rect x="470" y="41" width="60" height="2" rx="1" fill="url(#titleUnderline)"/>
 
-  <!-- ===== Fixed-Size Chunking Card ===== -->
-  <rect x="30" y="65" width="260" height="210" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <rect x="30" y="65" width="260" height="45" rx="16" fill="url(#skyGrad)"/>
-  <rect x="30" y="94" width="260" height="16" fill="url(#skyGrad)"/>
-  <text x="160" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">Fixed-Size Chunking</text>
+  <!-- ============================================== -->
+  <!-- CARD 1: Fixed-Size Chunking (sky)              -->
+  <!-- ============================================== -->
+  <!-- Glow -->
+  <rect x="28" y="63" width="304" height="224" rx="16" fill="#38bdf8" opacity="0.08"/>
+  <!-- Card body -->
+  <rect x="30" y="65" width="300" height="220" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <!-- Header -->
+  <rect x="30" y="65" width="300" height="28" rx="12" fill="url(#skyGrad)"/>
+  <rect x="30" y="81" width="300" height="12" fill="url(#skyGrad)"/>
+  <text x="180" y="84" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#030712" text-anchor="middle">Fixed-Size Chunking</text>
 
-  <!-- Fixed chunks visualization -->
-  <rect x="50" y="128" width="60" height="30" rx="6" fill="#38bdf815" stroke="#38bdf860" stroke-width="1.5"/>
-  <rect x="115" y="128" width="60" height="30" rx="6" fill="#38bdf815" stroke="#38bdf860" stroke-width="1.5"/>
-  <rect x="180" y="128" width="60" height="30" rx="6" fill="#38bdf815" stroke="#38bdf860" stroke-width="1.5"/>
-  <rect x="50" y="163" width="60" height="30" rx="6" fill="#38bdf815" stroke="#38bdf860" stroke-width="1.5"/>
-  <rect x="115" y="163" width="60" height="30" rx="6" fill="#38bdf815" stroke="#38bdf860" stroke-width="1.5"/>
-  <text x="160" y="218" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">512 tokens each</text>
+  <!-- Visualization: 3x2 grid of equal rectangles -->
+  <rect x="55"  y="102" width="80" height="28" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1" opacity="0.8"/>
+  <rect x="141" y="102" width="80" height="28" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1" opacity="0.8"/>
+  <rect x="227" y="102" width="80" height="28" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1" opacity="0.8"/>
+  <rect x="55"  y="136" width="80" height="28" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1" opacity="0.8"/>
+  <rect x="141" y="136" width="80" height="28" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1" opacity="0.8"/>
+  <rect x="227" y="136" width="80" height="28" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1" opacity="0.8"/>
+  <!-- Label inside blocks -->
+  <text x="95"  y="120" font-family="Arial, sans-serif" font-size="8" fill="#38bdf8" text-anchor="middle" opacity="0.6">512</text>
+  <text x="181" y="120" font-family="Arial, sans-serif" font-size="8" fill="#38bdf8" text-anchor="middle" opacity="0.6">512</text>
+  <text x="267" y="120" font-family="Arial, sans-serif" font-size="8" fill="#38bdf8" text-anchor="middle" opacity="0.6">512</text>
+  <text x="95"  y="154" font-family="Arial, sans-serif" font-size="8" fill="#38bdf8" text-anchor="middle" opacity="0.6">512</text>
+  <text x="181" y="154" font-family="Arial, sans-serif" font-size="8" fill="#38bdf8" text-anchor="middle" opacity="0.6">512</text>
+  <text x="267" y="154" font-family="Arial, sans-serif" font-size="8" fill="#38bdf8" text-anchor="middle" opacity="0.6">512</text>
 
-  <text x="50" y="245" font-family="Arial, sans-serif" font-size="11" fill="#34d399">&#x2713; Simple, predictable</text>
-  <text x="50" y="262" font-family="Arial, sans-serif" font-size="11" fill="#fb7185">&#x2717; Splits sentences</text>
+  <!-- Overlap indicators -->
+  <rect x="130" y="102" width="16" height="28" rx="0" fill="#38bdf8" opacity="0.15"/>
+  <rect x="216" y="102" width="16" height="28" rx="0" fill="#38bdf8" opacity="0.15"/>
+  <rect x="130" y="136" width="16" height="28" rx="0" fill="#38bdf8" opacity="0.15"/>
+  <rect x="216" y="136" width="16" height="28" rx="0" fill="#38bdf8" opacity="0.15"/>
 
-  <!-- ===== Recursive Chunking Card ===== -->
-  <rect x="320" y="65" width="260" height="210" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <rect x="320" y="65" width="260" height="45" rx="16" fill="url(#emeraldGrad)"/>
-  <rect x="320" y="94" width="260" height="16" fill="url(#emeraldGrad)"/>
-  <text x="450" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">Recursive Chunking</text>
+  <text x="180" y="180" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">512 tokens each, 50 token overlap</text>
 
-  <!-- Recursive chunks visualization -->
-  <rect x="340" y="128" width="100" height="25" rx="6" fill="#34d39915" stroke="#34d39960" stroke-width="1.5"/>
-  <rect x="450" y="128" width="70" height="25" rx="6" fill="#34d39915" stroke="#34d39960" stroke-width="1.5"/>
-  <rect x="340" y="158" width="80" height="25" rx="6" fill="#34d39915" stroke="#34d39960" stroke-width="1.5"/>
-  <rect x="430" y="158" width="90" height="25" rx="6" fill="#34d39915" stroke="#34d39960" stroke-width="1.5"/>
-  <rect x="340" y="188" width="60" height="25" rx="6" fill="#34d39915" stroke="#34d39960" stroke-width="1.5"/>
-  <text x="450" y="233" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">Paragraph &#x2192; Sentence &#x2192; Word</text>
+  <!-- Pro -->
+  <text x="50" y="200" font-family="Arial, sans-serif" font-size="10" fill="#34d399">Predictable, fast, simple</text>
+  <!-- Con -->
+  <text x="50" y="218" font-family="Arial, sans-serif" font-size="10" fill="#fb7185">Splits mid-sentence, loses context</text>
 
-  <text x="340" y="255" font-family="Arial, sans-serif" font-size="11" fill="#34d399">&#x2713; Respects boundaries</text>
-  <text x="340" y="272" font-family="Arial, sans-serif" font-size="11" fill="#fb7185">&#x2717; Variable sizes</text>
+  <!-- Checkmark and X symbols -->
+  <text x="42" y="200" font-family="Arial, sans-serif" font-size="10" fill="#34d399">+</text>
+  <text x="42" y="218" font-family="Arial, sans-serif" font-size="10" fill="#fb7185">-</text>
 
-  <!-- ===== Semantic Chunking Card ===== -->
-  <rect x="610" y="65" width="260" height="210" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <rect x="610" y="65" width="260" height="45" rx="16" fill="url(#purpleGrad)"/>
-  <rect x="610" y="94" width="260" height="16" fill="url(#purpleGrad)"/>
-  <text x="740" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">Semantic Chunking</text>
+  <!-- ============================================== -->
+  <!-- CARD 2: Recursive Chunking (emerald)           -->
+  <!-- ============================================== -->
+  <!-- Glow -->
+  <rect x="348" y="63" width="304" height="224" rx="16" fill="#34d399" opacity="0.08"/>
+  <!-- Card body -->
+  <rect x="350" y="65" width="300" height="220" rx="12" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <!-- Header -->
+  <rect x="350" y="65" width="300" height="28" rx="12" fill="url(#emeraldGrad)"/>
+  <rect x="350" y="81" width="300" height="12" fill="url(#emeraldGrad)"/>
+  <text x="500" y="84" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#030712" text-anchor="middle">Recursive Chunking</text>
 
-  <!-- Semantic chunks visualization -->
-  <rect x="630" y="128" width="90" height="35" rx="6" fill="#c084fc15" stroke="#c084fc60" stroke-width="1.5"/>
-  <text x="675" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#c084fc">Topic A</text>
-  <rect x="730" y="128" width="70" height="35" rx="6" fill="#fb718515" stroke="#fb718560" stroke-width="1.5"/>
-  <text x="765" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#fb7185">Topic B</text>
-  <rect x="630" y="173" width="110" height="35" rx="6" fill="#38bdf815" stroke="#38bdf860" stroke-width="1.5"/>
-  <text x="685" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#38bdf8">Topic C</text>
-  <text x="740" y="233" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">Split at topic changes</text>
+  <!-- Visualization: variable-width rectangles -->
+  <rect x="370" y="102" width="120" height="20" rx="4" fill="#0f172a" stroke="#34d399" stroke-width="1" opacity="0.8"/>
+  <rect x="496" y="102" width="70"  height="20" rx="4" fill="#0f172a" stroke="#34d399" stroke-width="1" opacity="0.8"/>
+  <rect x="572" y="102" width="60"  height="20" rx="4" fill="#0f172a" stroke="#34d399" stroke-width="1" opacity="0.8"/>
+  <rect x="370" y="128" width="90"  height="20" rx="4" fill="#0f172a" stroke="#34d399" stroke-width="1" opacity="0.8"/>
+  <rect x="466" y="128" width="105" height="20" rx="4" fill="#0f172a" stroke="#34d399" stroke-width="1" opacity="0.8"/>
+  <rect x="577" y="128" width="55"  height="20" rx="4" fill="#0f172a" stroke="#34d399" stroke-width="1" opacity="0.8"/>
+  <!-- Labels -->
+  <text x="430" y="116" font-family="Arial, sans-serif" font-size="7" fill="#34d399" text-anchor="middle" opacity="0.6">paragraph</text>
+  <text x="531" y="116" font-family="Arial, sans-serif" font-size="7" fill="#34d399" text-anchor="middle" opacity="0.6">sent</text>
+  <text x="602" y="116" font-family="Arial, sans-serif" font-size="7" fill="#34d399" text-anchor="middle" opacity="0.6">sent</text>
+  <text x="415" y="142" font-family="Arial, sans-serif" font-size="7" fill="#34d399" text-anchor="middle" opacity="0.6">para</text>
+  <text x="518" y="142" font-family="Arial, sans-serif" font-size="7" fill="#34d399" text-anchor="middle" opacity="0.6">paragraph</text>
+  <text x="604" y="142" font-family="Arial, sans-serif" font-size="7" fill="#34d399" text-anchor="middle" opacity="0.6">word</text>
 
-  <text x="630" y="255" font-family="Arial, sans-serif" font-size="11" fill="#34d399">&#x2713; Preserves meaning</text>
-  <text x="630" y="272" font-family="Arial, sans-serif" font-size="11" fill="#fb7185">&#x2717; Expensive (needs LLM)</text>
+  <!-- Fallback hierarchy arrow -->
+  <text x="500" y="165" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Paragraph -- Sentence -- Word fallback</text>
+  <text x="500" y="180" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">LangChain RecursiveCharacterTextSplitter</text>
 
-  <!-- ===== Parent-Child Chunking Card ===== -->
-  <rect x="30" y="300" width="405" height="220" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <rect x="30" y="300" width="405" height="45" rx="16" fill="url(#roseGrad)"/>
-  <rect x="30" y="329" width="405" height="16" fill="url(#roseGrad)"/>
-  <text x="232" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">Parent-Child Chunking</text>
+  <!-- Pro -->
+  <text x="362" y="200" font-family="Arial, sans-serif" font-size="10" fill="#34d399">+ Respects natural boundaries</text>
+  <!-- Con -->
+  <text x="362" y="218" font-family="Arial, sans-serif" font-size="10" fill="#fb7185">- Variable sizes, harder to optimize</text>
 
-  <!-- Parent document -->
-  <rect x="50" y="360" width="365" height="50" rx="8" fill="#fb718515" stroke="#fb718560" stroke-width="1.5"/>
-  <text x="232" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#fb7185" font-weight="bold">Parent: Full Page / Section</text>
+  <!-- ============================================== -->
+  <!-- CARD 3: Semantic Chunking (purple)             -->
+  <!-- ============================================== -->
+  <!-- Glow -->
+  <rect x="668" y="63" width="304" height="224" rx="16" fill="#c084fc" opacity="0.08"/>
+  <!-- Card body -->
+  <rect x="670" y="65" width="300" height="220" rx="12" fill="#0f172a" stroke="#c084fc" stroke-width="1.5"/>
+  <!-- Header -->
+  <rect x="670" y="65" width="300" height="28" rx="12" fill="url(#purpleGrad)"/>
+  <rect x="670" y="81" width="300" height="12" fill="url(#purpleGrad)"/>
+  <text x="820" y="84" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#030712" text-anchor="middle">Semantic Chunking</text>
 
-  <!-- Children connectors -->
-  <path d="M232 410 L232 430" stroke="#475569" stroke-width="2"/>
-  <path d="M100 430 L365 430" stroke="#475569" stroke-width="2"/>
-  <path d="M100 430 L100 445" stroke="#475569" stroke-width="2"/>
-  <path d="M232 430 L232 445" stroke="#475569" stroke-width="2"/>
-  <path d="M365 430 L365 445" stroke="#475569" stroke-width="2"/>
+  <!-- Visualization: 3 topic clusters of dots -->
+  <!-- Cluster 1 (sky) -->
+  <circle cx="710" cy="112" r="3" fill="#38bdf8" opacity="0.8"/>
+  <circle cx="720" cy="118" r="3" fill="#38bdf8" opacity="0.7"/>
+  <circle cx="715" cy="126" r="3" fill="#38bdf8" opacity="0.9"/>
+  <circle cx="728" cy="110" r="3" fill="#38bdf8" opacity="0.6"/>
+  <circle cx="705" cy="120" r="3" fill="#38bdf8" opacity="0.75"/>
+  <text x="716" y="142" font-family="Arial, sans-serif" font-size="7" fill="#38bdf8" text-anchor="middle" opacity="0.7">Topic A</text>
 
-  <rect x="50" y="450" width="100" height="40" rx="8" fill="#38bdf815" stroke="#38bdf860" stroke-width="1.5"/>
-  <text x="100" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#38bdf8">Child 1</text>
+  <!-- Cluster 2 (emerald) -->
+  <circle cx="790" cy="108" r="3" fill="#34d399" opacity="0.8"/>
+  <circle cx="800" cy="116" r="3" fill="#34d399" opacity="0.7"/>
+  <circle cx="785" cy="122" r="3" fill="#34d399" opacity="0.6"/>
+  <circle cx="808" cy="124" r="3" fill="#34d399" opacity="0.85"/>
+  <circle cx="795" cy="130" r="3" fill="#34d399" opacity="0.75"/>
+  <text x="796" y="142" font-family="Arial, sans-serif" font-size="7" fill="#34d399" text-anchor="middle" opacity="0.7">Topic B</text>
 
-  <rect x="182" y="450" width="100" height="40" rx="8" fill="#38bdf815" stroke="#38bdf860" stroke-width="1.5"/>
-  <text x="232" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#38bdf8">Child 2</text>
+  <!-- Cluster 3 (amber) -->
+  <circle cx="870" cy="114" r="3" fill="#fbbf24" opacity="0.7"/>
+  <circle cx="880" cy="106" r="3" fill="#fbbf24" opacity="0.8"/>
+  <circle cx="890" cy="118" r="3" fill="#fbbf24" opacity="0.6"/>
+  <circle cx="875" cy="124" r="3" fill="#fbbf24" opacity="0.9"/>
+  <circle cx="885" cy="130" r="3" fill="#fbbf24" opacity="0.7"/>
+  <text x="880" y="142" font-family="Arial, sans-serif" font-size="7" fill="#fbbf24" text-anchor="middle" opacity="0.7">Topic C</text>
 
-  <rect x="315" y="450" width="100" height="40" rx="8" fill="#38bdf815" stroke="#38bdf860" stroke-width="1.5"/>
-  <text x="365" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#38bdf8">Child 3</text>
+  <!-- Boundary lines between clusters -->
+  <line x1="760" y1="100" x2="760" y2="140" stroke="#c084fc" stroke-width="1" stroke-dasharray="3,2" opacity="0.4"/>
+  <line x1="845" y1="100" x2="845" y2="140" stroke="#c084fc" stroke-width="1" stroke-dasharray="3,2" opacity="0.4"/>
 
-  <text x="232" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">Search children &#x2192; Retrieve parent for context</text>
+  <text x="820" y="162" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Split at topic/meaning transitions</text>
+  <text x="820" y="177" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Embedding cosine similarity threshold</text>
 
-  <!-- ===== Comparison Summary Card ===== -->
-  <rect x="465" y="300" width="405" height="220" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <text x="667" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">Comparison Summary</text>
+  <!-- Pro -->
+  <text x="682" y="200" font-family="Arial, sans-serif" font-size="10" fill="#34d399">+ Best retrieval quality</text>
+  <!-- Con -->
+  <text x="682" y="218" font-family="Arial, sans-serif" font-size="10" fill="#fb7185">- Requires embedding model, 10x slower</text>
 
-  <!-- Table headers -->
-  <rect x="485" y="348" width="100" height="30" rx="4" fill="#0f172a"/>
-  <rect x="585" y="348" width="90" height="30" rx="4" fill="#0f172a"/>
-  <rect x="675" y="348" width="80" height="30" rx="4" fill="#0f172a"/>
-  <rect x="755" y="348" width="95" height="30" rx="4" fill="#0f172a"/>
+  <!-- ============================================== -->
+  <!-- BOTTOM LEFT: Parent-Child Chunking (rose)      -->
+  <!-- ============================================== -->
 
-  <text x="535" y="368" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8" font-weight="bold">Strategy</text>
-  <text x="630" y="368" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8" font-weight="bold">Speed</text>
-  <text x="715" y="368" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8" font-weight="bold">Quality</text>
-  <text x="802" y="368" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8" font-weight="bold">Use Case</text>
+  <!-- Section title -->
+  <text x="260" y="305" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">Parent-Child Chunking</text>
+  <rect x="230" y="311" width="60" height="2" rx="1" fill="url(#sectionUnderlineRose)"/>
 
-  <!-- Row separators -->
-  <line x1="485" y1="388" x2="850" y2="388" stroke="#334155" stroke-width="1"/>
-  <line x1="485" y1="413" x2="850" y2="413" stroke="#334155" stroke-width="1"/>
-  <line x1="485" y1="438" x2="850" y2="438" stroke="#334155" stroke-width="1"/>
-  <line x1="485" y1="463" x2="850" y2="463" stroke="#334155" stroke-width="1"/>
+  <!-- Glow -->
+  <rect x="28" y="318" width="464" height="254" rx="16" fill="#fb7185" opacity="0.08"/>
+  <!-- Card body -->
+  <rect x="30" y="320" width="460" height="250" rx="12" fill="#0f172a" stroke="#fb7185" stroke-width="1.5"/>
 
-  <!-- Row 1: Fixed-Size -->
-  <text x="535" y="403" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">Fixed-Size</text>
-  <text x="630" y="403" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#34d399">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</text>
-  <text x="715" y="403" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fbbf24">&#x2605;&#x2605;&#x2605;&#x2606;&#x2606;</text>
-  <text x="802" y="403" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Prototyping</text>
+  <!-- Parent rectangle -->
+  <rect x="70" y="340" width="380" height="60" rx="8" fill="#0f172a" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="260" y="362" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#fb7185" text-anchor="middle">Parent: Full Section (2000 tokens)</text>
+  <text x="260" y="378" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Complete context preserved for LLM generation</text>
+
+  <!-- Tree connectors -->
+  <line x1="155" y1="400" x2="155" y2="420" stroke="#fb7185" stroke-width="1.2" opacity="0.6"/>
+  <line x1="260" y1="400" x2="260" y2="420" stroke="#fb7185" stroke-width="1.2" opacity="0.6"/>
+  <line x1="365" y1="400" x2="365" y2="420" stroke="#fb7185" stroke-width="1.2" opacity="0.6"/>
+  <!-- Horizontal connector -->
+  <line x1="155" y1="400" x2="365" y2="400" stroke="#fb7185" stroke-width="1.2" opacity="0.6"/>
+  <line x1="260" y1="395" x2="260" y2="400" stroke="#fb7185" stroke-width="1.2" opacity="0.6"/>
+
+  <!-- Child 1 -->
+  <rect x="90" y="422" width="130" height="40" rx="6" fill="#0f172a" stroke="#fb7185" stroke-width="1" opacity="0.8"/>
+  <text x="155" y="439" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#f1f5f9" text-anchor="middle">Child 1</text>
+  <text x="155" y="452" font-family="Arial, sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">256 tokens</text>
+
+  <!-- Child 2 -->
+  <rect x="230" y="422" width="130" height="40" rx="6" fill="#0f172a" stroke="#fb7185" stroke-width="1" opacity="0.8"/>
+  <!-- Search indicator on child 2 -->
+  <rect x="230" y="422" width="130" height="40" rx="6" fill="#fb7185" opacity="0.1"/>
+  <text x="295" y="439" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#f1f5f9" text-anchor="middle">Child 2 (match)</text>
+  <text x="295" y="452" font-family="Arial, sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">256 tokens</text>
+
+  <!-- Child 3 -->
+  <rect x="370" y="422" width="100" height="40" rx="6" fill="#0f172a" stroke="#fb7185" stroke-width="1" opacity="0.8"/>
+  <text x="420" y="439" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#f1f5f9" text-anchor="middle">Child 3</text>
+  <text x="420" y="452" font-family="Arial, sans-serif" font-size="8" fill="#94a3b8" text-anchor="middle">256 tokens</text>
+
+  <!-- Flow description -->
+  <rect x="60" y="474" width="400" height="28" rx="6" fill="#fb7185" fill-opacity="0.08" stroke="#fb7185" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="260" y="492" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#fb7185" text-anchor="middle">Search on children -- Return parent for full context</text>
+
+  <!-- Best for info box -->
+  <rect x="60" y="510" width="400" height="24" rx="4" fill="#c084fc" fill-opacity="0.08" stroke="#c084fc" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="70" y="526" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#c084fc">Best for:</text>
+  <text x="120" y="526" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Legal documents, technical manuals, research papers</text>
+
+  <!-- ============================================== -->
+  <!-- BOTTOM RIGHT: Decision Guide                   -->
+  <!-- ============================================== -->
+
+  <!-- Section title -->
+  <text x="740" y="305" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">Decision Guide</text>
+  <rect x="710" y="311" width="60" height="2" rx="1" fill="url(#sectionUnderlineIndigo)"/>
+
+  <!-- Glow -->
+  <rect x="508" y="318" width="464" height="254" rx="16" fill="#818cf8" opacity="0.08"/>
+  <!-- Card body -->
+  <rect x="510" y="320" width="460" height="250" rx="12" fill="#0f172a" stroke="#818cf8" stroke-width="1.5"/>
+
+  <!-- Table header -->
+  <rect x="525" y="338" width="430" height="26" rx="4" fill="#818cf8" opacity="0.15"/>
+  <text x="580" y="355" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#818cf8" text-anchor="middle">Strategy</text>
+  <text x="665" y="355" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#818cf8" text-anchor="middle">Speed</text>
+  <text x="725" y="355" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#818cf8" text-anchor="middle">Quality</text>
+  <text x="785" y="355" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#818cf8" text-anchor="middle">Cost</text>
+  <text x="890" y="355" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#818cf8" text-anchor="middle">Best For</text>
+
+  <!-- Divider -->
+  <line x1="525" y1="366" x2="955" y2="366" stroke="#334155" stroke-width="0.8"/>
+
+  <!-- Row 1: Fixed -->
+  <rect x="525" y="370" width="430" height="36" rx="0" fill="#38bdf8" opacity="0.04"/>
+  <circle cx="540" cy="388" r="4" fill="#38bdf8"/>
+  <text x="555" y="392" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">Fixed</text>
+  <!-- Speed: 5/5 -->
+  <circle cx="645" cy="388" r="3.5" fill="#34d399"/><circle cx="655" cy="388" r="3.5" fill="#34d399"/><circle cx="665" cy="388" r="3.5" fill="#34d399"/><circle cx="675" cy="388" r="3.5" fill="#34d399"/><circle cx="685" cy="388" r="3.5" fill="#34d399"/>
+  <!-- Quality: 3/5 -->
+  <circle cx="709" cy="388" r="3.5" fill="#fbbf24"/><circle cx="719" cy="388" r="3.5" fill="#fbbf24"/><circle cx="729" cy="388" r="3.5" fill="#fbbf24"/><circle cx="739" cy="388" r="3.5" fill="#334155" opacity="0.5"/><circle cx="749" cy="388" r="3.5" fill="#334155" opacity="0.5"/>
+  <!-- Cost: 5/5 (cheap = good) -->
+  <circle cx="769" cy="388" r="3.5" fill="#34d399"/><circle cx="779" cy="388" r="3.5" fill="#34d399"/><circle cx="789" cy="388" r="3.5" fill="#34d399"/><circle cx="799" cy="388" r="3.5" fill="#34d399"/><circle cx="809" cy="388" r="3.5" fill="#34d399"/>
+  <text x="890" y="392" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Prototyping</text>
+
+  <!-- Divider -->
+  <line x1="530" y1="406" x2="950" y2="406" stroke="#334155" stroke-width="0.5" opacity="0.4"/>
 
   <!-- Row 2: Recursive -->
-  <text x="535" y="428" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">Recursive</text>
-  <text x="630" y="428" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#34d399">&#x2605;&#x2605;&#x2605;&#x2605;&#x2606;</text>
-  <text x="715" y="428" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#34d399">&#x2605;&#x2605;&#x2605;&#x2605;&#x2606;</text>
-  <text x="802" y="428" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Production</text>
+  <circle cx="540" cy="424" r="4" fill="#34d399"/>
+  <text x="555" y="428" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">Recursive</text>
+  <!-- Speed: 4/5 -->
+  <circle cx="645" cy="424" r="3.5" fill="#34d399"/><circle cx="655" cy="424" r="3.5" fill="#34d399"/><circle cx="665" cy="424" r="3.5" fill="#34d399"/><circle cx="675" cy="424" r="3.5" fill="#34d399"/><circle cx="685" cy="424" r="3.5" fill="#334155" opacity="0.5"/>
+  <!-- Quality: 4/5 -->
+  <circle cx="709" cy="424" r="3.5" fill="#fbbf24"/><circle cx="719" cy="424" r="3.5" fill="#fbbf24"/><circle cx="729" cy="424" r="3.5" fill="#fbbf24"/><circle cx="739" cy="424" r="3.5" fill="#fbbf24"/><circle cx="749" cy="424" r="3.5" fill="#334155" opacity="0.5"/>
+  <!-- Cost: 4/5 -->
+  <circle cx="769" cy="424" r="3.5" fill="#34d399"/><circle cx="779" cy="424" r="3.5" fill="#34d399"/><circle cx="789" cy="424" r="3.5" fill="#34d399"/><circle cx="799" cy="424" r="3.5" fill="#34d399"/><circle cx="809" cy="424" r="3.5" fill="#334155" opacity="0.5"/>
+  <text x="890" y="428" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Production default</text>
+
+  <!-- Divider -->
+  <line x1="530" y1="442" x2="950" y2="442" stroke="#334155" stroke-width="0.5" opacity="0.4"/>
 
   <!-- Row 3: Semantic -->
-  <text x="535" y="453" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">Semantic</text>
-  <text x="630" y="453" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fb7185">&#x2605;&#x2605;&#x2606;&#x2606;&#x2606;</text>
-  <text x="715" y="453" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#34d399">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</text>
-  <text x="802" y="453" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">High-value</text>
+  <circle cx="540" cy="460" r="4" fill="#c084fc"/>
+  <text x="555" y="464" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">Semantic</text>
+  <!-- Speed: 2/5 -->
+  <circle cx="645" cy="460" r="3.5" fill="#34d399"/><circle cx="655" cy="460" r="3.5" fill="#34d399"/><circle cx="665" cy="460" r="3.5" fill="#334155" opacity="0.5"/><circle cx="675" cy="460" r="3.5" fill="#334155" opacity="0.5"/><circle cx="685" cy="460" r="3.5" fill="#334155" opacity="0.5"/>
+  <!-- Quality: 5/5 -->
+  <circle cx="709" cy="460" r="3.5" fill="#fbbf24"/><circle cx="719" cy="460" r="3.5" fill="#fbbf24"/><circle cx="729" cy="460" r="3.5" fill="#fbbf24"/><circle cx="739" cy="460" r="3.5" fill="#fbbf24"/><circle cx="749" cy="460" r="3.5" fill="#fbbf24"/>
+  <!-- Cost: 2/5 -->
+  <circle cx="769" cy="460" r="3.5" fill="#34d399"/><circle cx="779" cy="460" r="3.5" fill="#34d399"/><circle cx="789" cy="460" r="3.5" fill="#334155" opacity="0.5"/><circle cx="799" cy="460" r="3.5" fill="#334155" opacity="0.5"/><circle cx="809" cy="460" r="3.5" fill="#334155" opacity="0.5"/>
+  <text x="890" y="464" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">High-value content</text>
+
+  <!-- Divider -->
+  <line x1="530" y1="478" x2="950" y2="478" stroke="#334155" stroke-width="0.5" opacity="0.4"/>
 
   <!-- Row 4: Parent-Child -->
-  <text x="535" y="478" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">Parent-Child</text>
-  <text x="630" y="478" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fbbf24">&#x2605;&#x2605;&#x2605;&#x2606;&#x2606;</text>
-  <text x="715" y="478" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#34d399">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</text>
-  <text x="802" y="478" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Long docs</text>
+  <circle cx="540" cy="496" r="4" fill="#fb7185"/>
+  <text x="555" y="500" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">Parent-Child</text>
+  <!-- Speed: 3/5 -->
+  <circle cx="645" cy="496" r="3.5" fill="#34d399"/><circle cx="655" cy="496" r="3.5" fill="#34d399"/><circle cx="665" cy="496" r="3.5" fill="#34d399"/><circle cx="675" cy="496" r="3.5" fill="#334155" opacity="0.5"/><circle cx="685" cy="496" r="3.5" fill="#334155" opacity="0.5"/>
+  <!-- Quality: 5/5 -->
+  <circle cx="709" cy="496" r="3.5" fill="#fbbf24"/><circle cx="719" cy="496" r="3.5" fill="#fbbf24"/><circle cx="729" cy="496" r="3.5" fill="#fbbf24"/><circle cx="739" cy="496" r="3.5" fill="#fbbf24"/><circle cx="749" cy="496" r="3.5" fill="#fbbf24"/>
+  <!-- Cost: 3/5 -->
+  <circle cx="769" cy="496" r="3.5" fill="#34d399"/><circle cx="779" cy="496" r="3.5" fill="#34d399"/><circle cx="789" cy="496" r="3.5" fill="#34d399"/><circle cx="799" cy="496" r="3.5" fill="#334155" opacity="0.5"/><circle cx="809" cy="496" r="3.5" fill="#334155" opacity="0.5"/>
+  <text x="890" y="500" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8" text-anchor="middle">Long documents</text>
 
-  <!-- Key Insight (amber callout) -->
-  <rect x="485" y="490" width="365" height="25" rx="8" fill="#fbbf2415" stroke="#fbbf2460" stroke-width="1"/>
-  <text x="667" y="507" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fbbf24" font-weight="bold">&#x1F4A1; 80% of RAG failures trace back to chunking decisions</text>
+  <!-- Legend -->
+  <rect x="530" y="516" width="420" height="36" rx="4" fill="#0f172a" stroke="#334155" stroke-width="0.5"/>
+  <circle cx="548" cy="534" r="3.5" fill="#34d399"/>
+  <text x="558" y="538" font-family="Arial, sans-serif" font-size="8" fill="#94a3b8">Filled = high</text>
+  <circle cx="628" cy="534" r="3.5" fill="#334155" opacity="0.5"/>
+  <text x="638" y="538" font-family="Arial, sans-serif" font-size="8" fill="#94a3b8">Empty = low</text>
+  <text x="730" y="538" font-family="Arial, sans-serif" font-size="8" fill="#94a3b8">Speed/Cost: higher is better (cheaper/faster)</text>
+
+  <!-- ============================================== -->
+  <!-- BOTTOM CALLOUT BAR                             -->
+  <!-- ============================================== -->
+  <rect x="30" y="558" width="940" height="34" rx="8" fill="#fbbf24" fill-opacity="0.08" stroke="#fbbf24" stroke-opacity="0.4" stroke-width="1.5"/>
+  <rect x="44" y="569" width="4" height="14" rx="1" fill="#fbbf24"/>
+  <text x="60" y="580" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fbbf24">80% of RAG failures trace back to chunking decisions -- invest here first</text>
 </svg>

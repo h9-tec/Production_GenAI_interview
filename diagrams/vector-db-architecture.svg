@@ -1,135 +1,312 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
-  <defs>
-    <linearGradient id="darkGrad" x1="0%" y1="0%" x2="100%" y2="100%" gradientTransform="rotate(135)">
-      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1e1b4b;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="vdbSky" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="vdbEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#34d399;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="vdbPurple" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#c084fc;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="vdbIndigo" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#818cf8;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="vdbRose" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#fb7185;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#f43f5e;stop-opacity:1" />
-    </linearGradient>
-    <marker id="vdbArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#475569"/>
-    </marker>
-  </defs>
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580">
   <!-- Background -->
-  <rect width="900" height="500" fill="#0f172a"/>
-  <rect width="900" height="500" fill="url(#darkGrad)"/>
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0c1222"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </radialGradient>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="roseGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+    <linearGradient id="indigoGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="580" fill="url(#bgGrad)"/>
+
+  <!-- Star field decorative dots -->
+  <circle cx="50" cy="25" r="1" fill="#f1f5f9" opacity="0.14"/>
+  <circle cx="180" cy="48" r="1" fill="#f1f5f9" opacity="0.11"/>
+  <circle cx="320" cy="18" r="1" fill="#f1f5f9" opacity="0.17"/>
+  <circle cx="460" cy="40" r="1" fill="#f1f5f9" opacity="0.13"/>
+  <circle cx="590" cy="12" r="1" fill="#f1f5f9" opacity="0.15"/>
+  <circle cx="720" cy="35" r="1" fill="#f1f5f9" opacity="0.10"/>
+  <circle cx="860" cy="22" r="1" fill="#f1f5f9" opacity="0.18"/>
+  <circle cx="950" cy="45" r="1" fill="#f1f5f9" opacity="0.12"/>
+  <circle cx="80" cy="570" r="1" fill="#f1f5f9" opacity="0.16"/>
+  <circle cx="230" cy="565" r="1" fill="#f1f5f9" opacity="0.11"/>
+  <circle cx="440" cy="572" r="1" fill="#f1f5f9" opacity="0.14"/>
+  <circle cx="620" cy="568" r="1" fill="#f1f5f9" opacity="0.13"/>
+  <circle cx="800" cy="575" r="1" fill="#f1f5f9" opacity="0.17"/>
+  <circle cx="920" cy="560" r="1" fill="#f1f5f9" opacity="0.10"/>
+  <circle cx="70" cy="285" r="1" fill="#f1f5f9" opacity="0.15"/>
+  <circle cx="960" cy="290" r="1" fill="#f1f5f9" opacity="0.12"/>
+  <circle cx="500" cy="278" r="1" fill="#f1f5f9" opacity="0.13"/>
 
   <!-- Title -->
-  <text x="450" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#f1f5f9">Vector Database &amp; Embeddings Architecture</text>
+  <text x="500" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#f1f5f9">Vector Database &amp; Embeddings Architecture</text>
 
-  <!-- Left: Embedding Generation Card -->
-  <rect x="30" y="70" width="250" height="180" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <rect x="30" y="70" width="250" height="40" rx="16" fill="url(#vdbSky)"/>
-  <rect x="30" y="94" width="250" height="16" fill="url(#vdbSky)"/>
-  <text x="155" y="96" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#f1f5f9" font-weight="bold">Embedding Generation</text>
+  <!-- ==================== CARD 1: Embedding Generation (sky) ==================== -->
+  <!-- Glow -->
+  <rect x="28" y="63" width="304" height="199" rx="12" fill="#38bdf8" opacity="0.08"/>
+  <!-- Card -->
+  <rect x="30" y="65" width="300" height="195" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <!-- Header -->
+  <rect x="30" y="65" width="300" height="32" rx="8" fill="url(#skyGrad)" opacity="0.15"/>
+  <rect x="30" y="85" width="300" height="12" fill="#0f172a"/>
+  <text x="180" y="87" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#38bdf8">Embedding Generation</text>
 
-  <text x="50" y="130" font-family="Arial, sans-serif" font-size="11" fill="#f1f5f9">Text: "RAG improves accuracy"</text>
-  <text x="155" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">&#x2193; Embedding Model</text>
-  <text x="50" y="180" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">Vector: [0.23, -0.45, 0.12, ...]</text>
-  <text x="50" y="200" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Dimensions: 384 - 3072</text>
-  <text x="50" y="220" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Models: OpenAI, Cohere, E5, BGE</text>
+  <!-- Input text bubble -->
+  <rect x="48" y="102" width="264" height="26" rx="13" fill="#38bdf8" opacity="0.06"/>
+  <rect x="48" y="102" width="264" height="26" rx="13" fill="none" stroke="#38bdf8" stroke-width="0.8" opacity="0.3"/>
+  <text x="180" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">"RAG improves accuracy"</text>
 
-  <!-- Arrow -->
-  <path d="M280 160 L320 160" stroke="#475569" stroke-width="2" marker-end="url(#vdbArrow)"/>
+  <!-- Arrow down -->
+  <line x1="180" y1="130" x2="180" y2="145" stroke="#334155" stroke-width="1.2"/>
+  <polygon points="176,145 180,153 184,145" fill="#334155"/>
 
-  <!-- Middle: Vector Database Card -->
-  <rect x="320" y="70" width="260" height="180" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <rect x="320" y="70" width="260" height="40" rx="16" fill="url(#vdbEmerald)"/>
-  <rect x="320" y="94" width="260" height="16" fill="url(#vdbEmerald)"/>
-  <text x="450" y="96" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#f1f5f9" font-weight="bold">Vector Database</text>
+  <!-- Embedding Model label -->
+  <rect x="120" y="144" width="120" height="20" rx="4" fill="#38bdf8" opacity="0.10"/>
+  <text x="180" y="159" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#38bdf8">Embedding Model</text>
 
-  <!-- Vector visualization -->
-  <g transform="translate(340, 120)">
-    <circle cx="20" cy="20" r="6" fill="#34d399"/>
-    <circle cx="60" cy="35" r="6" fill="#34d399"/>
-    <circle cx="45" cy="60" r="6" fill="#34d399"/>
-    <circle cx="100" cy="25" r="6" fill="#34d399"/>
-    <circle cx="85" cy="55" r="6" fill="#34d399"/>
-    <circle cx="130" cy="45" r="6" fill="#34d399"/>
-    <circle cx="160" cy="30" r="6" fill="#34d399"/>
-    <circle cx="180" cy="60" r="6" fill="#34d399"/>
-    <!-- Query point -->
-    <circle cx="70" cy="40" r="8" fill="#fb7185" stroke="#1e293b" stroke-width="2"/>
-    <text x="70" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#fb7185">Query</text>
-  </g>
+  <!-- Arrow down -->
+  <line x1="180" y1="166" x2="180" y2="178" stroke="#334155" stroke-width="1.2"/>
+  <polygon points="176,178 180,186 184,178" fill="#334155"/>
 
-  <text x="450" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">ANN Search: Find K nearest neighbors</text>
-  <text x="450" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Pinecone | Weaviate | Qdrant | pgvector</text>
+  <!-- Output vector bubble -->
+  <rect x="48" y="180" width="264" height="24" rx="12" fill="#34d399" opacity="0.06"/>
+  <rect x="48" y="180" width="264" height="24" rx="12" fill="none" stroke="#34d399" stroke-width="0.8" opacity="0.3"/>
+  <text x="180" y="196" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#34d399">[0.23, -0.45, 0.12, ...]</text>
 
-  <!-- Arrow -->
-  <path d="M580 160 L620 160" stroke="#475569" stroke-width="2" marker-end="url(#vdbArrow)"/>
+  <!-- Info lines -->
+  <text x="180" y="219" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Dimensions: 384 - 3072</text>
+  <text x="180" y="234" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" fill="#94a3b8">Models: text-embedding-3, Cohere, E5, BGE</text>
 
-  <!-- Right: Index Types Card -->
-  <rect x="620" y="70" width="250" height="180" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <rect x="620" y="70" width="250" height="40" rx="16" fill="url(#vdbPurple)"/>
-  <rect x="620" y="94" width="250" height="16" fill="url(#vdbPurple)"/>
-  <text x="745" y="96" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#f1f5f9" font-weight="bold">Index Types</text>
+  <!-- ==================== CARD 2: Vector Database (emerald) ==================== -->
+  <!-- Glow -->
+  <rect x="343" y="63" width="304" height="199" rx="12" fill="#34d399" opacity="0.08"/>
+  <!-- Card -->
+  <rect x="345" y="65" width="300" height="195" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <!-- Header -->
+  <rect x="345" y="65" width="300" height="32" rx="8" fill="url(#emeraldGrad)" opacity="0.15"/>
+  <rect x="345" y="85" width="300" height="12" fill="#0f172a"/>
+  <text x="495" y="87" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#34d399">Vector Database</text>
 
-  <text x="640" y="130" font-family="Arial, sans-serif" font-size="11" fill="#f1f5f9" font-weight="bold">HNSW</text>
-  <text x="640" y="145" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Graph-based, fast, high memory</text>
+  <!-- Scatter plot area -->
+  <!-- Regular emerald dots -->
+  <circle cx="385" cy="125" r="3" fill="#34d399" opacity="0.5"/>
+  <circle cx="410" cy="150" r="3" fill="#34d399" opacity="0.5"/>
+  <circle cx="435" cy="110" r="3" fill="#34d399" opacity="0.5"/>
+  <circle cx="460" cy="175" r="3" fill="#34d399" opacity="0.5"/>
+  <circle cx="490" cy="120" r="3" fill="#34d399" opacity="0.5"/>
+  <circle cx="530" cy="145" r="3" fill="#34d399" opacity="0.5"/>
+  <circle cx="555" cy="110" r="3" fill="#34d399" opacity="0.5"/>
+  <circle cx="580" cy="165" r="3" fill="#34d399" opacity="0.5"/>
+  <circle cx="605" cy="130" r="3" fill="#34d399" opacity="0.5"/>
 
-  <text x="640" y="170" font-family="Arial, sans-serif" font-size="11" fill="#f1f5f9" font-weight="bold">IVF</text>
-  <text x="640" y="185" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Clustering, balanced, needs training</text>
+  <!-- Query dot (rose) with concentric search radius circles -->
+  <circle cx="510" cy="148" r="38" fill="none" stroke="#fb7185" stroke-width="0.5" opacity="0.15"/>
+  <circle cx="510" cy="148" r="26" fill="none" stroke="#fb7185" stroke-width="0.7" opacity="0.25"/>
+  <circle cx="510" cy="148" r="14" fill="none" stroke="#fb7185" stroke-width="0.9" opacity="0.35"/>
+  <circle cx="510" cy="148" r="5" fill="#fb7185" opacity="0.9"/>
+  <text x="524" y="144" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#fb7185">Query</text>
 
-  <text x="640" y="210" font-family="Arial, sans-serif" font-size="11" fill="#f1f5f9" font-weight="bold">PQ (Product Quantization)</text>
-  <text x="640" y="225" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Compressed, billion-scale, lower accuracy</text>
+  <!-- Highlighted nearest dots (brighter, larger) -->
+  <circle cx="490" cy="120" r="4.5" fill="#34d399" opacity="0.95"/>
+  <circle cx="530" cy="145" r="4.5" fill="#34d399" opacity="0.95"/>
+  <circle cx="490" cy="155" r="3" fill="#34d399" opacity="0.5"/>
+  <circle cx="505" cy="165" r="4.5" fill="#34d399" opacity="0.95"/>
 
-  <!-- Distance Metrics Card -->
-  <rect x="30" y="280" width="400" height="190" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <text x="230" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">Distance Metrics</text>
+  <!-- Label -->
+  <text x="495" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f1f5f9">ANN: Find K nearest neighbors</text>
 
-  <!-- Cosine -->
-  <rect x="50" y="330" width="110" height="80" rx="10" fill="#38bdf815" stroke="#38bdf860" stroke-width="1"/>
-  <text x="105" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#38bdf8" font-weight="bold">Cosine</text>
-  <text x="105" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Angle between</text>
-  <text x="105" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">vectors</text>
-  <text x="105" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#34d399">Most common</text>
+  <!-- Info -->
+  <text x="495" y="218" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Pinecone | Weaviate | Qdrant | pgvector</text>
 
-  <!-- Euclidean -->
-  <rect x="175" y="330" width="110" height="80" rx="10" fill="#34d39915" stroke="#34d39960" stroke-width="1"/>
-  <text x="230" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#34d399" font-weight="bold">Euclidean</text>
-  <text x="230" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Straight-line</text>
-  <text x="230" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">distance</text>
-  <text x="230" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">When magnitude matters</text>
+  <!-- Axis lines for scatter -->
+  <line x1="370" y1="190" x2="630" y2="190" stroke="#1e293b" stroke-width="0.5"/>
+  <line x1="370" y1="100" x2="370" y2="190" stroke="#1e293b" stroke-width="0.5"/>
 
-  <!-- Dot Product -->
-  <rect x="300" y="330" width="110" height="80" rx="10" fill="#c084fc15" stroke="#c084fc60" stroke-width="1"/>
-  <text x="355" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#c084fc" font-weight="bold">Dot Product</text>
-  <text x="355" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Element-wise</text>
-  <text x="355" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">product sum</text>
-  <text x="355" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Fastest compute</text>
+  <!-- ==================== CARD 3: Index Types (purple) ==================== -->
+  <!-- Glow -->
+  <rect x="658" y="63" width="314" height="199" rx="12" fill="#c084fc" opacity="0.08"/>
+  <!-- Card -->
+  <rect x="660" y="65" width="310" height="195" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1.5"/>
+  <!-- Header -->
+  <rect x="660" y="65" width="310" height="32" rx="8" fill="url(#purpleGrad)" opacity="0.15"/>
+  <rect x="660" y="85" width="310" height="12" fill="#0f172a"/>
+  <text x="815" y="87" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#c084fc">Index Types</text>
 
-  <text x="230" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">&#x1F4A1; If vectors are L2-normalized, all three give equivalent rankings</text>
+  <!-- HNSW - Graph icon -->
+  <circle cx="690" cy="115" r="3" fill="#c084fc" opacity="0.8"/>
+  <circle cx="706" cy="105" r="3" fill="#c084fc" opacity="0.8"/>
+  <circle cx="706" cy="125" r="3" fill="#c084fc" opacity="0.8"/>
+  <circle cx="722" cy="115" r="3" fill="#c084fc" opacity="0.8"/>
+  <line x1="690" y1="115" x2="706" y2="105" stroke="#c084fc" stroke-width="0.8" opacity="0.6"/>
+  <line x1="690" y1="115" x2="706" y2="125" stroke="#c084fc" stroke-width="0.8" opacity="0.6"/>
+  <line x1="706" y1="105" x2="722" y2="115" stroke="#c084fc" stroke-width="0.8" opacity="0.6"/>
+  <line x1="706" y1="125" x2="722" y2="115" stroke="#c084fc" stroke-width="0.8" opacity="0.6"/>
+  <text x="738" y="112" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f1f5f9">HNSW</text>
+  <text x="738" y="126" font-family="Arial, sans-serif" font-size="9.5" fill="#94a3b8">Graph-based, fast queries, high memory</text>
 
-  <!-- Scale Challenges Card -->
-  <rect x="470" y="280" width="400" height="190" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <text x="670" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">Scale Challenges</text>
+  <!-- IVF - Cluster icon -->
+  <circle cx="690" cy="152" r="2" fill="#38bdf8" opacity="0.7"/>
+  <circle cx="696" cy="148" r="2" fill="#38bdf8" opacity="0.7"/>
+  <circle cx="694" cy="156" r="2" fill="#38bdf8" opacity="0.7"/>
+  <circle cx="706" cy="152" r="2" fill="#34d399" opacity="0.7"/>
+  <circle cx="712" cy="148" r="2" fill="#34d399" opacity="0.7"/>
+  <circle cx="710" cy="156" r="2" fill="#34d399" opacity="0.7"/>
+  <circle cx="722" cy="152" r="2" fill="#fbbf24" opacity="0.7"/>
+  <circle cx="728" cy="148" r="2" fill="#fbbf24" opacity="0.7"/>
+  <circle cx="726" cy="156" r="2" fill="#fbbf24" opacity="0.7"/>
+  <text x="738" y="150" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f1f5f9">IVF</text>
+  <text x="738" y="163" font-family="Arial, sans-serif" font-size="9.5" fill="#94a3b8">Cluster-based, balanced, needs training</text>
 
-  <rect x="490" y="330" width="360" height="35" rx="8" fill="#fbbf2415" stroke="#fbbf2460" stroke-width="1"/>
-  <text x="670" y="352" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fbbf24" font-weight="bold">1B vectors &#xD7; 1024 dims = ~4TB storage</text>
+  <!-- PQ - Compressed icon (large rect → small rect) -->
+  <rect x="686" y="183" width="18" height="14" rx="2" fill="none" stroke="#c084fc" stroke-width="1" opacity="0.7"/>
+  <line x1="706" y1="190" x2="714" y2="190" stroke="#c084fc" stroke-width="0.8" opacity="0.5"/>
+  <polygon points="714,187 718,190 714,193" fill="#c084fc" opacity="0.5"/>
+  <rect x="720" y="186" width="10" height="8" rx="1" fill="none" stroke="#c084fc" stroke-width="1" opacity="0.7"/>
+  <text x="738" y="189" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f1f5f9">PQ</text>
+  <text x="738" y="202" font-family="Arial, sans-serif" font-size="9.5" fill="#94a3b8">Compressed, billion-scale, lower recall</text>
 
-  <rect x="490" y="375" width="360" height="35" rx="8" fill="#fb718515" stroke="#fb718560" stroke-width="1"/>
-  <text x="670" y="397" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fb7185" font-weight="bold">Embedding generation: 5.8+ days on single L4 GPU</text>
+  <!-- Separator lines between index items -->
+  <line x1="675" y1="135" x2="955" y2="135" stroke="#1e293b" stroke-width="0.5"/>
+  <line x1="675" y1="173" x2="955" y2="173" stroke="#1e293b" stroke-width="0.5"/>
 
-  <rect x="490" y="420" width="360" height="35" rx="8" fill="#38bdf815" stroke="#38bdf860" stroke-width="1"/>
-  <text x="670" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#38bdf8" font-weight="bold">Model upgrade = Full re-indexing required</text>
+  <!-- ==================== ARROWS BETWEEN TOP CARDS ==================== -->
+  <!-- Card1 → Card2 -->
+  <line x1="332" y1="162" x2="343" y2="162" stroke="#334155" stroke-width="1.5"/>
+  <polygon points="340,158 348,162 340,166" fill="#334155"/>
+
+  <!-- Card2 → Card3 -->
+  <line x1="647" y1="162" x2="658" y2="162" stroke="#334155" stroke-width="1.5"/>
+  <polygon points="655,158 663,162 655,166" fill="#334155"/>
+
+  <!-- ==================== BOTTOM LEFT CARD: Distance Metrics ==================== -->
+  <!-- Glow -->
+  <rect x="28" y="288" width="464" height="264" rx="12" fill="#818cf8" opacity="0.08"/>
+  <!-- Card -->
+  <rect x="30" y="290" width="460" height="260" rx="8" fill="#0f172a" stroke="#818cf8" stroke-width="1.5"/>
+  <!-- Header -->
+  <rect x="30" y="290" width="460" height="32" rx="8" fill="url(#indigoGrad)" opacity="0.15"/>
+  <rect x="30" y="310" width="460" height="12" fill="#0f172a"/>
+  <text x="260" y="312" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#818cf8">Distance Metrics</text>
+
+  <!-- Sub-card 1: Cosine Similarity (sky) -->
+  <rect x="42" y="330" width="140" height="150" rx="6" fill="#0a0f1a" stroke="#38bdf8" stroke-width="1" opacity="0.6"/>
+  <text x="112" y="348" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#38bdf8">Cosine Similarity</text>
+
+  <!-- Visual: Two arrows from origin with arc -->
+  <line x1="75" y1="400" x2="130" y2="362" stroke="#38bdf8" stroke-width="1.2" opacity="0.8"/>
+  <line x1="75" y1="400" x2="140" y2="385" stroke="#f1f5f9" stroke-width="1.2" opacity="0.5"/>
+  <path d="M 110,373 A 25,25 0 0,1 122,388" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.6"/>
+  <circle cx="75" cy="400" r="2" fill="#38bdf8" opacity="0.8"/>
+
+  <text x="112" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Measures angle</text>
+  <text x="112" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">between vectors</text>
+  <text x="112" y="448" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Most common for text</text>
+
+  <!-- DEFAULT badge -->
+  <rect x="82" y="456" width="60" height="18" rx="9" fill="#38bdf8" opacity="0.12"/>
+  <rect x="82" y="456" width="60" height="18" rx="9" fill="none" stroke="#38bdf8" stroke-width="0.8" opacity="0.4"/>
+  <text x="112" y="469" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#38bdf8">DEFAULT</text>
+
+  <!-- Sub-card 2: Euclidean (emerald) -->
+  <rect x="192" y="330" width="140" height="150" rx="6" fill="#0a0f1a" stroke="#34d399" stroke-width="1" opacity="0.6"/>
+  <text x="262" y="348" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#34d399">Euclidean (L2)</text>
+
+  <!-- Visual: Two points with straight line -->
+  <circle cx="222" cy="375" r="4" fill="#34d399" opacity="0.7"/>
+  <circle cx="298" cy="395" r="4" fill="#34d399" opacity="0.7"/>
+  <line x1="222" y1="375" x2="298" y2="395" stroke="#34d399" stroke-width="1.2" stroke-dasharray="3,2" opacity="0.6"/>
+  <!-- Distance label on line -->
+  <text x="260" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#34d399" opacity="0.8">d</text>
+
+  <text x="262" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Straight-line</text>
+  <text x="262" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">distance</text>
+  <text x="262" y="448" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">When magnitude matters</text>
+
+  <!-- Sub-card 3: Dot Product (purple) -->
+  <rect x="342" y="330" width="140" height="150" rx="6" fill="#0a0f1a" stroke="#c084fc" stroke-width="1" opacity="0.6"/>
+  <text x="412" y="348" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#c084fc">Dot Product</text>
+
+  <!-- Visual: Two arrows with projection -->
+  <line x1="372" y1="400" x2="450" y2="370" stroke="#c084fc" stroke-width="1.2" opacity="0.8"/>
+  <line x1="372" y1="400" x2="445" y2="395" stroke="#f1f5f9" stroke-width="1.2" opacity="0.5"/>
+  <!-- Projection line (dashed vertical) -->
+  <line x1="440" y1="372" x2="440" y2="396" stroke="#fbbf24" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.5"/>
+  <circle cx="372" cy="400" r="2" fill="#c084fc" opacity="0.8"/>
+
+  <text x="412" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Projection</text>
+  <text x="412" y="432" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">magnitude</text>
+  <text x="412" y="448" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Fastest computation</text>
+
+  <!-- Info callout at bottom of card -->
+  <rect x="42" y="488" width="436" height="28" rx="6" fill="#fbbf24" opacity="0.08"/>
+  <rect x="42" y="488" width="436" height="28" rx="6" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.4"/>
+  <text x="260" y="507" text-anchor="middle" font-family="Arial, sans-serif" font-size="9.5" font-weight="bold" fill="#fbbf24">&#128161; If vectors are L2-normalized, all three metrics produce equivalent rankings</text>
+
+  <!-- ==================== BOTTOM RIGHT CARD: Scale Challenges ==================== -->
+  <!-- Glow -->
+  <rect x="508" y="288" width="464" height="264" rx="12" fill="#fb7185" opacity="0.08"/>
+  <!-- Card -->
+  <rect x="510" y="290" width="460" height="260" rx="8" fill="#0f172a" stroke="#fb7185" stroke-width="1.5"/>
+  <!-- Header -->
+  <rect x="510" y="290" width="460" height="32" rx="8" fill="url(#roseGrad)" opacity="0.15"/>
+  <rect x="510" y="310" width="460" height="12" fill="#0f172a"/>
+  <text x="740" y="312" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#fb7185">Scale Challenges</text>
+
+  <!-- Challenge Bar 1: Amber - Storage -->
+  <rect x="522" y="330" width="436" height="36" rx="6" fill="#fbbf24" opacity="0.06"/>
+  <rect x="522" y="330" width="436" height="36" rx="6" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.3"/>
+  <!-- Storage icon (stacked discs) -->
+  <ellipse cx="544" cy="341" rx="10" ry="4" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.7"/>
+  <ellipse cx="544" cy="348" rx="10" ry="4" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.7"/>
+  <ellipse cx="544" cy="355" rx="10" ry="4" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.7"/>
+  <line x1="534" y1="341" x2="534" y2="355" stroke="#fbbf24" stroke-width="1" opacity="0.7"/>
+  <line x1="554" y1="341" x2="554" y2="355" stroke="#fbbf24" stroke-width="1" opacity="0.7"/>
+  <text x="566" y="352" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#fbbf24">1B vectors x 1024 dims = ~4TB storage</text>
+
+  <!-- Challenge Bar 2: Rose - Time -->
+  <rect x="522" y="374" width="436" height="36" rx="6" fill="#fb7185" opacity="0.06"/>
+  <rect x="522" y="374" width="436" height="36" rx="6" fill="none" stroke="#fb7185" stroke-width="1" opacity="0.3"/>
+  <!-- Clock icon -->
+  <circle cx="544" cy="392" r="10" fill="none" stroke="#fb7185" stroke-width="1" opacity="0.7"/>
+  <line x1="544" y1="392" x2="544" y2="385" stroke="#fb7185" stroke-width="1" opacity="0.7"/>
+  <line x1="544" y1="392" x2="550" y2="395" stroke="#fb7185" stroke-width="1" opacity="0.7"/>
+  <text x="566" y="396" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#fb7185">Embedding generation: 5.8+ days on single L4 GPU</text>
+
+  <!-- Challenge Bar 3: Sky - Re-indexing -->
+  <rect x="522" y="418" width="436" height="36" rx="6" fill="#38bdf8" opacity="0.06"/>
+  <rect x="522" y="418" width="436" height="36" rx="6" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.3"/>
+  <!-- Refresh icon (circular arrow) -->
+  <path d="M 540,430 A 8,8 0 1,1 548,440" fill="none" stroke="#38bdf8" stroke-width="1.2" opacity="0.7"/>
+  <polygon points="548,437 548,443 553,440" fill="#38bdf8" opacity="0.7"/>
+  <text x="566" y="440" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#38bdf8">Model upgrade = Full re-indexing required</text>
+
+  <!-- Mitigation Strategies section -->
+  <text x="530" y="472" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#f1f5f9">Mitigation Strategies</text>
+  <line x1="530" y1="476" x2="680" y2="476" stroke="#1e293b" stroke-width="0.5"/>
+
+  <circle cx="530" cy="490" r="2" fill="#34d399" opacity="0.8"/>
+  <text x="540" y="494" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Quantization: </text>
+  <text x="610" y="494" font-family="Arial, sans-serif" font-size="10" fill="#34d399">int8 reduces storage 4x</text>
+  <text x="770" y="494" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8"> with &lt;1% recall loss</text>
+
+  <circle cx="530" cy="510" r="2" fill="#34d399" opacity="0.8"/>
+  <text x="540" y="514" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Streaming indexing: </text>
+  <text x="648" y="514" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Process in batches, not all-at-once</text>
+
+  <circle cx="530" cy="530" r="2" fill="#34d399" opacity="0.8"/>
+  <text x="540" y="534" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Matryoshka embeddings: </text>
+  <text x="678" y="534" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Variable dimensions per use case</text>
 </svg>

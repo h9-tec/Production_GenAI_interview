@@ -1,136 +1,209 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480">
-  <defs>
-    <linearGradient id="darkGrad" x1="0%" y1="0%" x2="100%" y2="100%" gradientTransform="rotate(135)">
-      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1e1b4b;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="scSky" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="scEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#34d399;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="scAmber" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="scRose" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#fb7185;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#f43f5e;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="scIndigo" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#818cf8;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
-    </linearGradient>
-    <marker id="scArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#475569"/>
-    </marker>
-    <marker id="scArrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#34d399"/>
-    </marker>
-  </defs>
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 550">
   <!-- Background -->
-  <rect width="900" height="480" fill="#0f172a"/>
-  <rect width="900" height="480" fill="url(#darkGrad)"/>
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0c1222"/>
+      <stop offset="100%" stop-color="#030712"/>
+    </radialGradient>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="roseGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="550" fill="url(#bgGrad)"/>
+
+  <!-- Star field decorative dots -->
+  <circle cx="45" cy="30" r="1" fill="#f1f5f9" opacity="0.12"/>
+  <circle cx="150" cy="55" r="1" fill="#f1f5f9" opacity="0.18"/>
+  <circle cx="280" cy="20" r="1" fill="#f1f5f9" opacity="0.10"/>
+  <circle cx="410" cy="45" r="1" fill="#f1f5f9" opacity="0.15"/>
+  <circle cx="530" cy="15" r="1" fill="#f1f5f9" opacity="0.13"/>
+  <circle cx="670" cy="38" r="1" fill="#f1f5f9" opacity="0.17"/>
+  <circle cx="780" cy="22" r="1" fill="#f1f5f9" opacity="0.11"/>
+  <circle cx="900" cy="50" r="1" fill="#f1f5f9" opacity="0.14"/>
+  <circle cx="960" cy="28" r="1" fill="#f1f5f9" opacity="0.16"/>
+  <circle cx="100" cy="540" r="1" fill="#f1f5f9" opacity="0.12"/>
+  <circle cx="250" cy="530" r="1" fill="#f1f5f9" opacity="0.10"/>
+  <circle cx="500" cy="540" r="1" fill="#f1f5f9" opacity="0.15"/>
+  <circle cx="720" cy="535" r="1" fill="#f1f5f9" opacity="0.13"/>
+  <circle cx="850" cy="542" r="1" fill="#f1f5f9" opacity="0.18"/>
+  <circle cx="60" cy="280" r="1" fill="#f1f5f9" opacity="0.11"/>
+  <circle cx="940" cy="300" r="1" fill="#f1f5f9" opacity="0.14"/>
+  <circle cx="500" cy="275" r="1" fill="#f1f5f9" opacity="0.16"/>
+  <circle cx="350" cy="270" r="1" fill="#f1f5f9" opacity="0.10"/>
 
   <!-- Title -->
-  <text x="450" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#f1f5f9">Semantic Caching Architecture</text>
+  <text x="500" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#f1f5f9">Semantic Caching Architecture</text>
 
-  <!-- Query Input -->
-  <rect x="30" y="80" width="100" height="50" rx="10" fill="url(#scSky)"/>
-  <text x="80" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#f1f5f9" font-weight="bold">Query</text>
+  <!-- ==================== TOP SECTION: Cache Flow ==================== -->
 
-  <!-- Arrow -->
-  <path d="M130 105 L170 105" stroke="#475569" stroke-width="2" marker-end="url(#scArrow)"/>
+  <!-- 1. Query Pill -->
+  <rect x="18" y="85" width="90" height="38" rx="20" fill="#38bdf8" opacity="0.08"/>
+  <rect x="16" y="83" width="90" height="38" rx="20" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="61" y="107" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#38bdf8">Query</text>
 
-  <!-- Embedding -->
-  <rect x="180" y="80" width="100" height="50" rx="10" fill="url(#scEmerald)"/>
-  <text x="230" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#f1f5f9" font-weight="bold">Embed</text>
-  <text x="230" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#f1f5f9">Query</text>
+  <!-- Arrow 1: Query → Embed Query -->
+  <line x1="108" y1="102" x2="148" y2="102" stroke="#334155" stroke-width="1.5"/>
+  <polygon points="148,97 158,102 148,107" fill="#334155"/>
 
-  <!-- Arrow -->
-  <path d="M280 105 L320 105" stroke="#475569" stroke-width="2" marker-end="url(#scArrow)"/>
+  <!-- 2. Embed Query Box -->
+  <rect x="162" y="79" width="114" height="54" rx="10" fill="#34d399" opacity="0.08"/>
+  <rect x="160" y="77" width="114" height="54" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="217" y="109" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#34d399">Embed Query</text>
 
-  <!-- Cache Lookup -->
-  <rect x="330" y="70" width="140" height="70" rx="10" fill="url(#scAmber)"/>
-  <text x="400" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#0f172a" font-weight="bold">Semantic</text>
-  <text x="400" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#0f172a" font-weight="bold">Cache Lookup</text>
-  <text x="400" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#0f172a">similarity > 0.85?</text>
+  <!-- Arrow 2: Embed Query → Cache Lookup -->
+  <line x1="276" y1="102" x2="316" y2="102" stroke="#334155" stroke-width="1.5"/>
+  <polygon points="316,97 326,102 316,107" fill="#334155"/>
 
-  <!-- Decision Diamond -->
-  <polygon points="540,105 580,75 620,105 580,135" fill="#1e293b" stroke="#475569" stroke-width="2"/>
-  <text x="580" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">Hit?</text>
+  <!-- 3. Cache Lookup Box (prominent) -->
+  <rect x="330" y="71" width="148" height="69" rx="12" fill="#fbbf24" opacity="0.08"/>
+  <rect x="328" y="69" width="148" height="69" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="402" y="98" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#fbbf24">Cache Lookup</text>
+  <text x="402" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">cosine sim > 0.85?</text>
 
-  <!-- Arrow to decision -->
-  <path d="M470 105 L540 105" stroke="#475569" stroke-width="2"/>
+  <!-- Arrow 3: Cache Lookup → Diamond -->
+  <line x1="478" y1="102" x2="528" y2="102" stroke="#334155" stroke-width="1.5"/>
+  <polygon points="528,97 538,102 528,107" fill="#334155"/>
 
-  <!-- Cache Hit Path -->
-  <path d="M620 105 L680 105" stroke="#34d399" stroke-width="2" marker-end="url(#scArrowGreen)"/>
-  <text x="650" y="95" font-family="Arial, sans-serif" font-size="10" fill="#34d399">Yes</text>
+  <!-- 4. Diamond Decision Node "Hit?" -->
+  <g transform="translate(570,102)">
+    <rect x="-32" y="-32" width="64" height="64" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1.5" transform="rotate(45)"/>
+    <text x="0" y="5" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#f1f5f9">Hit?</text>
+  </g>
 
-  <rect x="690" y="80" width="120" height="50" rx="10" fill="url(#scEmerald)"/>
-  <text x="750" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#f1f5f9" font-weight="bold">Return</text>
-  <text x="750" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#f1f5f9" font-weight="bold">Cached</text>
+  <!-- ===== YES Path (emerald, going right) ===== -->
+  <!-- YES label -->
+  <text x="630" y="82" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#34d399">YES</text>
+  <!-- Thick emerald arrow right -->
+  <line x1="616" y1="88" x2="690" y2="88" stroke="#34d399" stroke-width="3"/>
+  <polygon points="690,82 704,88 690,94" fill="#34d399"/>
 
-  <!-- Cache Miss Path -->
-  <path d="M580 135 L580 180 L330 180" stroke="#fb7185" stroke-width="2"/>
-  <text x="600" y="160" font-family="Arial, sans-serif" font-size="10" fill="#fb7185">No</text>
+  <!-- Return Cached Response Box -->
+  <rect x="710" y="64" width="188" height="54" rx="10" fill="#34d399" opacity="0.08"/>
+  <rect x="708" y="62" width="188" height="54" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="802" y="86" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#34d399">Return Cached</text>
+  <text x="802" y="103" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#34d399">Response</text>
 
-  <rect x="180" y="155" width="150" height="50" rx="10" fill="url(#scRose)"/>
-  <text x="255" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#f1f5f9" font-weight="bold">Full RAG Pipeline</text>
-  <text x="255" y="192" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#f1f5f9">Retrieve + Generate</text>
+  <!-- Lightning bolt + <5ms label -->
+  <rect x="906" y="73" width="78" height="28" rx="14" fill="#34d399" opacity="0.12"/>
+  <text x="945" y="92" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#34d399">&#9889; &lt;5ms</text>
 
-  <!-- Update cache -->
-  <path d="M255 205 L255 230 L400 230 L400 140" stroke="#475569" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#scArrow)"/>
-  <text x="330" y="248" font-family="Arial, sans-serif" font-size="9" fill="#94a3b8">Update cache</text>
+  <!-- ===== NO Path (rose, going down) ===== -->
+  <!-- NO label -->
+  <text x="582" y="156" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fb7185">NO</text>
+  <!-- Rose arrow down -->
+  <line x1="570" y1="148" x2="570" y2="182" stroke="#fb7185" stroke-width="1.5"/>
+  <polygon points="565,182 570,194 575,182" fill="#fb7185"/>
 
-  <!-- Comparison Table Card -->
-  <rect x="30" y="280" width="400" height="180" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <text x="230" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">Exact vs Semantic Caching</text>
+  <!-- Full RAG Pipeline Box -->
+  <rect x="497" y="198" width="156" height="59" rx="10" fill="#fb7185" opacity="0.08"/>
+  <rect x="495" y="196" width="156" height="59" rx="6" fill="#0f172a" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="573" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#fb7185">Full RAG Pipeline</text>
+  <text x="573" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">Retrieve &#8594; Augment &#8594; Generate</text>
 
-  <!-- Table Header -->
-  <rect x="50" y="325" width="120" height="25" rx="4" fill="#0f172a"/>
-  <rect x="170" y="325" width="120" height="25" rx="4" fill="#0f172a"/>
-  <rect x="290" y="325" width="120" height="25" rx="4" fill="#0f172a"/>
+  <!-- ~2-5s label -->
+  <rect x="660" y="206" width="68" height="24" rx="12" fill="#fb7185" opacity="0.12"/>
+  <text x="694" y="223" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#fb7185">~2-5s</text>
 
-  <text x="110" y="342" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" font-weight="bold">Aspect</text>
-  <text x="230" y="342" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" font-weight="bold">Exact Match</text>
-  <text x="350" y="342" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" font-weight="bold">Semantic</text>
+  <!-- Dashed arrow looping back up to cache: from RAG box left → up → into Cache Lookup bottom -->
+  <line x1="495" y1="228" x2="420" y2="228" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5,3"/>
+  <line x1="420" y1="228" x2="420" y2="144" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5,3"/>
+  <polygon points="416,146 420,138 424,146" fill="#94a3b8"/>
+  <text x="380" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8" transform="rotate(-90,380,190)">Store in cache</text>
 
-  <!-- Row separators -->
-  <line x1="50" y1="355" x2="410" y2="355" stroke="#334155" stroke-width="1"/>
-  <line x1="50" y1="380" x2="410" y2="380" stroke="#334155" stroke-width="1"/>
-  <line x1="50" y1="405" x2="410" y2="405" stroke="#334155" stroke-width="1"/>
-  <line x1="50" y1="430" x2="410" y2="430" stroke="#334155" stroke-width="1"/>
+  <!-- ==================== BOTTOM LEFT CARD ==================== -->
+  <!-- Glow -->
+  <rect x="28" y="288" width="464" height="234" rx="12" fill="#818cf8" opacity="0.08"/>
+  <!-- Card body -->
+  <rect x="30" y="290" width="460" height="230" rx="8" fill="#0f172a" stroke="#818cf8" stroke-width="1.5"/>
+  <!-- Card header -->
+  <rect x="30" y="290" width="460" height="34" rx="8" fill="url(#skyGrad)" opacity="0.15"/>
+  <rect x="30" y="310" width="460" height="14" fill="#0f172a"/>
+  <text x="260" y="312" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#38bdf8">Exact vs Semantic Caching</text>
 
-  <text x="110" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">Hit Rate</text>
-  <text x="230" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fb7185">5-15%</text>
-  <text x="350" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#34d399">40-70%</text>
+  <!-- Table Header Row -->
+  <rect x="38" y="328" width="444" height="24" rx="4" fill="#060a14"/>
+  <text x="100" y="345" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#94a3b8">Aspect</text>
+  <text x="260" y="345" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#94a3b8">Exact Match</text>
+  <text x="410" y="345" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#94a3b8">Semantic</text>
 
-  <text x="110" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">False Positives</text>
-  <text x="230" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#34d399">None</text>
-  <text x="350" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fbbf24">Possible</text>
+  <!-- Row 1: Hit Rate (alt bg) -->
+  <rect x="38" y="354" width="444" height="24" rx="2" fill="#0f172a"/>
+  <text x="100" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">Hit Rate</text>
+  <text x="260" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fb7185">5-15%</text>
+  <text x="410" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#34d399">40-70%</text>
 
-  <text x="110" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">Complexity</text>
-  <text x="230" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#34d399">Simple</text>
-  <text x="350" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fbbf24">Medium</text>
+  <!-- Row 2: False Positives -->
+  <rect x="38" y="378" width="444" height="24" rx="2" fill="#0a0f1a"/>
+  <text x="100" y="394" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">False Positives</text>
+  <text x="260" y="394" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#34d399">None</text>
+  <text x="410" y="394" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fbbf24">Possible</text>
 
-  <text x="110" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#f1f5f9">Latency</text>
-  <text x="230" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#34d399">&lt;1ms</text>
-  <text x="350" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fbbf24">5-20ms</text>
+  <!-- Row 3: Complexity -->
+  <rect x="38" y="402" width="444" height="24" rx="2" fill="#0f172a"/>
+  <text x="100" y="418" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">Complexity</text>
+  <text x="260" y="418" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#34d399">Simple</text>
+  <text x="410" y="418" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fbbf24">Medium</text>
 
-  <!-- Cost Savings Card -->
-  <rect x="470" y="280" width="400" height="180" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <text x="670" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#f1f5f9" font-weight="bold">Real-World Impact</text>
+  <!-- Row 4: Latency -->
+  <rect x="38" y="426" width="444" height="24" rx="2" fill="#0a0f1a"/>
+  <text x="100" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">Latency</text>
+  <text x="260" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#34d399">&lt;1ms</text>
+  <text x="410" y="442" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fbbf24">5-20ms</text>
 
-  <rect x="490" y="330" width="360" height="60" rx="10" fill="#34d39915" stroke="#34d39960" stroke-width="2"/>
-  <text x="670" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#34d399" font-weight="bold">$52K &#x2192; $4.8K monthly</text>
-  <text x="670" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#34d399">90% cost reduction with semantic caching</text>
+  <!-- Row 5: Setup -->
+  <rect x="38" y="450" width="444" height="24" rx="2" fill="#0f172a"/>
+  <text x="100" y="466" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#94a3b8">Setup</text>
+  <text x="260" y="466" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#34d399">Hash key</text>
+  <text x="410" y="466" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#fbbf24">Vector store</text>
 
-  <text x="490" y="415" font-family="Arial, sans-serif" font-size="11" fill="#f1f5f9">&#x2022; 70% of queries were variations of same questions</text>
-  <text x="490" y="435" font-family="Arial, sans-serif" font-size="11" fill="#f1f5f9">&#x2022; Pre-warming based on yesterday's patterns</text>
-  <text x="490" y="455" font-family="Arial, sans-serif" font-size="11" fill="#f1f5f9">&#x2022; Dialect normalization for Arabic variations</text>
+  <!-- Separator lines for table columns -->
+  <line x1="170" y1="328" x2="170" y2="474" stroke="#1e293b" stroke-width="0.5"/>
+  <line x1="340" y1="328" x2="340" y2="474" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- ==================== BOTTOM RIGHT CARD ==================== -->
+  <!-- Glow -->
+  <rect x="508" y="288" width="464" height="234" rx="12" fill="#34d399" opacity="0.08"/>
+  <!-- Card body -->
+  <rect x="510" y="290" width="460" height="230" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
+  <!-- Card header -->
+  <rect x="510" y="290" width="460" height="34" rx="8" fill="url(#emeraldGrad)" opacity="0.15"/>
+  <rect x="510" y="310" width="460" height="14" fill="#0f172a"/>
+  <text x="740" y="312" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#34d399">Real-World Impact</text>
+
+  <!-- Hero number -->
+  <text x="740" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#34d399">$52K &#8594; $4.8K</text>
+  <text x="740" y="374" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8">monthly cost</text>
+
+  <!-- 90% reduction badge -->
+  <rect x="685" y="380" width="114" height="24" rx="12" fill="#34d399" opacity="0.12"/>
+  <rect x="685" y="380" width="114" height="24" rx="12" fill="none" stroke="#34d399" stroke-width="1" opacity="0.4"/>
+  <text x="742" y="396" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#34d399">90% reduction</text>
+
+  <!-- Bullet points -->
+  <circle cx="528" cy="420" r="2.5" fill="#38bdf8"/>
+  <text x="538" y="424" font-family="Arial, sans-serif" font-size="10.5" fill="#94a3b8">70% of queries were semantic variations of same questions</text>
+
+  <circle cx="528" cy="440" r="2.5" fill="#38bdf8"/>
+  <text x="538" y="444" font-family="Arial, sans-serif" font-size="10.5" fill="#94a3b8">Pre-warming based on yesterday's traffic patterns</text>
+
+  <circle cx="528" cy="460" r="2.5" fill="#38bdf8"/>
+  <text x="538" y="464" font-family="Arial, sans-serif" font-size="10.5" fill="#94a3b8">Arabic dialect normalization increased hit rate by 15%</text>
+
+  <!-- Bottom callout (amber) -->
+  <rect x="522" y="478" width="436" height="30" rx="6" fill="#fbbf24" opacity="0.08"/>
+  <rect x="522" y="478" width="436" height="30" rx="6" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.4"/>
+  <text x="740" y="498" text-anchor="middle" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#fbbf24">&#128161; Start with exact caching, add semantic layer when ROI is proven</text>
 </svg>
