@@ -154,6 +154,145 @@
 
 ---
 
+### Fresh Level
+
+#### Q7.4: What is function calling in LLMs and how does it work?
+
+**Expected Answer:**
+
+Function calling allows LLMs to interact with external systems by generating structured data describing API calls, rather than executing them directly.
+
+**How It Works:**
+1. Developer defines available tools with JSON Schema descriptions
+2. User sends a query to the LLM
+3. LLM decides if a tool call is needed
+4. LLM generates a structured JSON object (function name + parameters)
+5. Application code executes the actual function call
+6. Result is returned to the LLM for final response
+
+**Key Distinction:**
+- The LLM does NOT execute functions — it generates a data structure describing the call
+- The application is responsible for execution, validation, and error handling
+- This separation is critical for security and reliability
+
+**Common Use Cases:**
+- Database queries
+- API integrations (weather, booking, search)
+- Calculator/math operations
+- File operations
+- Multi-step workflows
+
+**Example Flow:**
+```
+User: "What's the weather in Dubai?"
+LLM Output: {"function": "get_weather", "parameters": {"city": "Dubai"}}
+App: Calls weather API → Returns 42°C
+LLM: "The current temperature in Dubai is 42°C"
+```
+
+**Red Flag:** Candidate thinks the LLM directly executes functions or API calls.
+
+---
+
+### Intermediate Level
+
+#### Q7.5: How does function calling differ from MCP (Model Context Protocol)? When would you use each?
+
+**Expected Answer:**
+
+**Function Calling:**
+- Defined per-application by the developer
+- Tools are hardcoded in the application code
+- Each LLM provider has slightly different API format
+- Developer manages tool registration and execution
+- Works offline, no network dependency for tool discovery
+
+**MCP (Model Context Protocol):**
+- Standardized protocol proposed by Anthropic (2024)
+- Tools are hosted on remote MCP servers
+- Universal interface — any LLM can use any MCP tool
+- Dynamic tool discovery at runtime
+- Requires network connectivity
+
+**The Relationship:**
+MCP and function calling are not in conflict — they're complementary:
+- Function calling = HOW the LLM decides what to do
+- MCP = HOW tools are discovered, described, and executed
+
+**When to Use Function Calling Only:**
+- Simple applications with 2-5 tools
+- Offline/edge deployments
+- Custom internal tools
+- Latency-critical paths
+
+**When to Use MCP:**
+- Need standardized tool ecosystem
+- Want plug-and-play tool integration
+- Building platform for multiple tool providers
+- Team builds tools consumed by multiple applications
+
+**Production Consideration:**
+In July 2025, a Replit AI agent deleted a production database via MCP despite explicit safety instructions — highlighting that MCP solves the integration problem, not the safety problem.
+
+**Key insight:** MCP standardizes the plumbing. You still need validation, rate limiting, and permission controls on top.
+
+---
+
+### Expert Level
+
+#### Q7.6: Design a production-safe tool execution framework. What guardrails do you need?
+
+**Expected Answer:**
+
+**The Problem:**
+LLMs make tool calling errors 3-15% of the time. In production, this means destructive actions, data leaks, or infinite loops without proper safeguards.
+
+**Framework Architecture:**
+
+**Layer 1: Tool Registry & Permissions**
+- Categorize tools by risk level: read-only, write, destructive
+- Define per-user permission boundaries
+- Rate limits per tool and per user
+- Allowlists for parameter values where possible
+
+**Layer 2: Pre-Execution Validation**
+
+| Check | Purpose | Example |
+|-------|---------|---------|
+| Schema validation | Parameters match spec | Reject missing required fields |
+| Value bounds | Parameters within range | Amount < $10,000 |
+| Semantic validation | Tool makes sense for context | Don't delete in a read query |
+| Confirmation gate | Human approval for high-risk | "Are you sure you want to delete?" |
+
+**Layer 3: Execution Sandbox**
+- Timeouts on all tool executions (5-30s)
+- Resource limits (memory, CPU)
+- Network isolation where possible
+- Idempotency tokens for write operations
+
+**Layer 4: Post-Execution Verification**
+- Validate return format
+- Check for error indicators
+- Log all executions with full context
+- Audit trail for destructive operations
+
+**Layer 5: Circuit Breakers**
+- Max tool calls per conversation (prevent loops)
+- Max consecutive failures before human escalation
+- Cost limits per session
+- Anomaly detection on tool usage patterns
+
+**Anti-Patterns to Avoid:**
+- Trusting LLM parameter values without validation
+- No timeout on tool execution
+- Allowing destructive tools without confirmation
+- No logging or audit trail
+- Unlimited tool call loops
+
+**Key insight:** Design tool execution as if the LLM is an untrusted junior developer — validate everything, limit blast radius, and always have a rollback plan.
+
+---
+
 ---
 
 [← Previous: Multi-Agent Systems](./06-multi-agent-systems.md) | [← Back to Main](../README.md) | [Next: Arabic NLP Challenges →](./08-arabic-nlp-challenges.md)

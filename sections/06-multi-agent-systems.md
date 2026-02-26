@@ -265,6 +265,220 @@ Multiple agents updating shared state simultaneously can cause:
 
 ---
 
+### Fresh Level
+
+#### Q6.6: What is an AI agent and how does it differ from a simple LLM call?
+
+**Expected Answer:**
+
+**Simple LLM Call:**
+- Input → LLM → Output
+- Single pass, no iteration
+- No access to external tools
+- No memory between calls
+- Stateless
+
+**AI Agent:**
+- LLM that can plan, use tools, and iterate
+- Decides what to do next based on observations
+- Has access to tools (search, code execution, APIs)
+- Maintains state across multiple steps
+- Can self-correct and retry
+
+**Key Differences:**
+
+| Aspect | Simple LLM Call | AI Agent |
+|--------|----------------|----------|
+| Steps | Single | Multiple |
+| Tools | None | Yes |
+| Planning | None | Yes |
+| Memory | None | Session state |
+| Self-correction | None | Can retry/adjust |
+| Latency | Fast (1-3s) | Slow (10-60s+) |
+| Cost | Low | High (multiple calls) |
+| Reliability | Predictable | Variable |
+
+**When to Use Each:**
+- Simple call: classification, summarization, Q&A, structured extraction
+- Agent: research tasks, multi-step workflows, tasks requiring tool use, dynamic problem-solving
+
+**Red Flag:** Candidate describes every LLM application as an "agent" — conflating a chat endpoint with agentic behavior.
+
+**Key insight:** Most production LLM applications should NOT be agents. Use agents only when the task genuinely requires planning, tool use, and iteration.
+
+---
+
+### Intermediate Level
+
+#### Q6.7: Compare CrewAI, LangGraph, and AutoGen. When would you use each?
+
+**Expected Answer:**
+
+**CrewAI:**
+- Role-based multi-agent framework
+- Define agents with roles, goals, and backstories
+- Agents collaborate in crews to complete tasks
+- Strengths: intuitive API, good for structured workflows
+- Weaknesses: less control over execution flow
+- Best for: teams wanting quick multi-agent setup, role-based task decomposition
+- Adoption: raised $18M funding, used by 60% of Fortune 500 (2025)
+
+**LangGraph:**
+- Graph-based agent workflow framework by LangChain
+- Define workflows as directed graphs (nodes = steps, edges = transitions)
+- Fine-grained control over execution flow
+- Strengths: precise flow control, stateful workflows, cycles supported
+- Weaknesses: steeper learning curve, LangChain ecosystem dependency
+- Best for: complex stateful workflows, production deployments needing precise control
+- Adoption: in production at LinkedIn, Uber, 400+ companies (2025)
+
+**AutoGen (now Microsoft Agent Framework):**
+- Conversation-based multi-agent framework
+- Agents communicate through messages (chat protocol)
+- Strengths: flexible, supports human-in-the-loop naturally
+- Weaknesses: harder to control, conversations can diverge
+- Best for: research, exploratory tasks, human-AI collaboration
+- Note: Microsoft merged AutoGen with Semantic Kernel into unified framework (Oct 2025), GA in Q1 2026
+
+**Comparison:**
+
+| Aspect | CrewAI | LangGraph | AutoGen |
+|--------|--------|-----------|---------|
+| Mental model | Teams with roles | Graphs with nodes | Conversations |
+| Control level | Medium | High | Low |
+| Learning curve | Easy | Medium | Medium |
+| Production-ready | Yes | Yes | Transitioning |
+| Best for | Structured tasks | Complex workflows | Research/exploration |
+
+**Decision Guide:**
+- Need quick prototype → CrewAI
+- Need precise control in production → LangGraph
+- Need human-in-the-loop collaboration → AutoGen
+- Already in LangChain ecosystem → LangGraph
+- Enterprise/Azure environment → AutoGen/Microsoft Agent Framework
+
+---
+
+### Advanced Level
+
+#### Q6.8: How do you prevent infinite loops and runaway costs in agent systems?
+
+**Expected Answer:**
+
+**The Problem:**
+Agents can get stuck in loops, repeatedly calling tools without making progress, or escalating costs unboundedly. A single runaway agent conversation can cost $50-$500+ in API calls.
+
+**Prevention Strategies:**
+
+**1. Hard Limits (Non-negotiable)**
+
+| Limit | Typical Value | Purpose |
+|-------|-------------|---------|
+| Max steps per task | 10-25 | Prevent infinite loops |
+| Max tokens per conversation | 50K-100K | Prevent unbounded generation |
+| Max cost per task | $1-$10 | Prevent cost explosion |
+| Max time per task | 5-30 minutes | Prevent hanging tasks |
+| Max consecutive failures | 3 | Prevent retry loops |
+
+**2. Loop Detection**
+- Track action-observation patterns
+- If same action repeated 3+ times → break and escalate
+- If same tool called with same parameters → break
+- Monitor "reasoning progress" — is the agent making forward progress?
+
+**3. Cost Tracking (Real-time)**
+- Count tokens at every step
+- Calculate running cost
+- Alert at 50% of budget, hard-stop at 100%
+- Log cost breakdown per agent per step
+
+**4. Circuit Breakers**
+- If error rate exceeds threshold → stop and alert
+- If latency exceeds threshold → timeout and fallback
+- If cost exceeds threshold → graceful shutdown
+
+**5. Fallback Strategies**
+- When agent exceeds limits → hand off to simpler system
+- When agent fails repeatedly → escalate to human
+- When agent is stuck → provide a default/safe response
+
+**Anti-Patterns:**
+- No limits on agent execution (the most common and dangerous)
+- Only time-based limits (agent can burn $100 in 2 minutes)
+- Retrying failed agent tasks without investigating root cause
+- Trust that "the prompt says stop after 5 steps" (LLMs ignore instructions)
+
+**Key insight:** Never trust the LLM to self-limit. Implement hard limits in APPLICATION code, not in prompts. Prompts are suggestions; code limits are enforced.
+
+---
+
+### Expert Level
+
+#### Q6.9: Design a multi-agent system for automated code review that handles 500 PRs per day.
+
+**Expected Answer:**
+
+**Requirements:**
+- 500 PRs/day average, peak 100/hour
+- Multi-language: Python, TypeScript, Java
+- Review types: bugs, security, performance, style
+- SLA: review within 30 minutes of PR creation
+- False positive rate: <10% (developers ignore noisy reviewers)
+
+**Agent Architecture:**
+
+**Agent 1: Triage Agent (fast, cheap)**
+- Classifies PR: size (S/M/L), risk level, languages used
+- Routes to appropriate specialist agents
+- Small PRs (<50 lines) get fast-path review
+- Model: GPT-4o mini or similar (fast, cheap)
+
+**Agent 2: Security Agent**
+- Specialized in vulnerability detection
+- Checks: SQL injection, XSS, secrets in code, auth issues
+- Uses SAST tools + LLM reasoning
+- Model: GPT-4o (needs strong reasoning)
+
+**Agent 3: Bug Detection Agent**
+- Looks for logic errors, race conditions, null handling
+- Analyzes diff in context of surrounding code
+- Cross-references with test coverage
+- Model: Claude Sonnet or GPT-4o
+
+**Agent 4: Style/Quality Agent**
+- Enforces team conventions and best practices
+- Checks naming, structure, documentation
+- Lower stakes, faster model OK
+- Model: GPT-4o mini
+
+**Orchestrator:**
+- Receives PR webhook
+- Launches triage agent
+- Based on triage, launches relevant specialist agents in parallel
+- Collects findings from all agents
+- Deduplicates and prioritizes
+- Posts consolidated review comment on PR
+
+**Cost Control:**
+
+| PR Size | Agents Used | Estimated Cost |
+|---------|------------|---------------|
+| Small (<50 lines) | Triage + Style | $0.05 |
+| Medium (50-200 lines) | All 4 agents | $0.30 |
+| Large (200+ lines) | All 4 + extra context | $0.80 |
+
+**At 500 PRs/day:** ~$100/day = $3,000/month
+
+**Quality Metrics:**
+- Track: accepted suggestions vs rejected (signal-to-noise ratio)
+- Developer feedback: thumbs up/down on each finding
+- False positive rate by agent and category
+- Use feedback to improve prompts and thresholds
+
+**Key insight:** The orchestrator-worker pattern works perfectly here. Keep specialist agents focused and fast. The biggest risk is false positives — developers stop reading reviews that cry wolf.
+
+---
+
 ---
 
 [← Previous: Semantic Caching](./05-semantic-caching.md) | [← Back to Main](../README.md) | [Next: Function Calling & Tool Use →](./07-function-calling-tool-use.md)

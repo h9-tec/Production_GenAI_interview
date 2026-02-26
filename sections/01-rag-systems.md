@@ -337,6 +337,170 @@ This is the classic "retrieval failure with good generation" problem.
 
 ---
 
+### Intermediate Level
+
+#### Q1.11: What is GraphRAG and when does it outperform standard vector RAG?
+
+**Expected Answer:**
+
+**What is GraphRAG:**
+GraphRAG builds a knowledge graph from documents and uses graph traversal combined with community summaries for retrieval, rather than relying solely on vector similarity.
+
+**How It Works:**
+1. Extract entities and relationships from documents using LLM
+2. Build a knowledge graph connecting entities
+3. Create hierarchical community summaries at different graph levels
+4. At query time, traverse graph structure and use community summaries
+
+**When GraphRAG Outperforms Vector RAG:**
+
+| Query Type | Vector RAG | GraphRAG |
+|------------|-----------|----------|
+| Specific factual | ✅ Excellent | ⚠️ Overkill |
+| Global/summary ("main themes across all docs") | ❌ Poor | ✅ Excellent |
+| Relationship ("how are X and Y connected?") | ❌ Misses connections | ✅ Captures relationships |
+| Multi-hop reasoning | ⚠️ Struggles | ✅ Follows entity paths |
+| Keyword-heavy | ✅ Good with hybrid | ⚠️ Not its strength |
+
+**Cost Considerations:**
+- GraphRAG indexing costs 10-100x more than vector indexing (LLM calls for entity extraction)
+- Query-time costs are also higher (graph traversal + summarization)
+- For a 1M document corpus, graph construction might cost $5,000-$50,000
+
+**Microsoft's GraphRAG Implementation:**
+- Improved answer quality significantly for global/summarization queries
+- But at dramatically higher cost and complexity
+- Best suited for high-value corpora where relationship understanding matters
+
+**Production Approach:**
+Use both — vector RAG for specific queries (90% of traffic), GraphRAG for exploratory/global queries (10% of traffic)
+
+**Key insight:** GraphRAG and vector RAG are complementary, not competing. Choose based on query types, not hype.
+
+---
+
+### Advanced Level
+
+#### Q1.12: What is Multimodal RAG and what are its production challenges?
+
+**Expected Answer:**
+
+**What is Multimodal RAG:**
+Retrieves and reasons over text, images, tables, charts, and other non-text content within documents.
+
+**Use Cases:**
+- Technical manuals with diagrams
+- Medical records with imaging
+- Financial reports with charts and tables
+- Manufacturing documentation with schematics
+
+**Architecture Approaches:**
+
+**1. Text Extraction (Simplest)**
+- Convert images to text descriptions (OCR, captioning)
+- Convert tables to markdown/text
+- Embed text only
+- Pros: Simple, works with any RAG system
+- Cons: Loses visual information, descriptions may be inaccurate
+
+**2. Multimodal Embeddings**
+- Use models like CLIP to embed images alongside text in shared vector space
+- Cross-modal retrieval: text query finds relevant images
+- Pros: Handles images natively
+- Cons: Complex, alignment quality varies
+
+**3. Vision-Language Models**
+- Use GPT-4V, Claude Vision to directly process images in context
+- Most capable approach
+- Pros: Understands complex visual content
+- Cons: Most expensive, high token costs for images
+
+**Production Challenges:**
+
+| Challenge | Why It's Hard | Current Solutions |
+|-----------|--------------|-------------------|
+| Cross-modal retrieval | Text query → find relevant image? | CLIP, multimodal embeddings |
+| Context assembly | How to fit images + text in prompt? | Summarize, select most relevant |
+| Table understanding | Structured data doesn't embed well | Convert to text, specialized models |
+| Cost | Image tokens are expensive | Extract text first, VLM only when needed |
+| Evaluation | No standard multimodal RAG benchmarks | Custom eval per modality |
+
+**Practical Production Approach:**
+1. Extract text from ALL content (OCR, table parsing, image captioning)
+2. Index extracted text for retrieval
+3. Store originals for display and context
+4. Use VLM only for content requiring true visual understanding
+5. Route: text-sufficient queries → text RAG; visual queries → multimodal pipeline
+
+**Key insight:** Most production multimodal RAG starts with excellent text extraction. Use vision models only for content that truly requires visual understanding — it's 10x cheaper.
+
+---
+
+### Expert Level
+
+#### Q1.13: How do you handle RAG at extreme scale (1B+ documents)? What architectural patterns change?
+
+**Expected Answer:**
+
+**The Scale Challenge:**
+- 1B documents × 50 chunks average = 50B vectors
+- At 1024 dimensions, FP32: ~200TB raw vector storage
+- Standard single-node approaches completely break down
+- Even HNSW can't hold 50B vectors in memory
+
+**What Changes at Billion Scale:**
+
+**1. Distributed Vector Index**
+- Shard vectors across 100+ nodes
+- Route queries to relevant shards (not all)
+- Options: Milvus cluster, Weaviate distributed, Elasticsearch vector
+- Must handle shard failures gracefully
+
+**2. Tiered Architecture (Critical)**
+```
+Query → [Metadata Pre-filter] → [Coarse Index: doc-level] → [Fine Index: chunk-level] → [Reranker]
+         (reduce to 10M)        (reduce to 10K)              (reduce to 500)             (top 20)
+```
+- Pre-filter by metadata: date, category, language, department
+- Coarse search: document-level embeddings, fast approximate
+- Fine search: chunk-level only within top documents
+- Rerank: cross-encoder on final candidates
+
+**3. Approximate Methods Become Mandatory**
+- IVF-PQ for memory efficiency (16-32x compression)
+- Accept 90-95% recall (not 99%)
+- Trade-off is necessary — 99% recall at 50B scale is prohibitively expensive
+
+**4. Caching at Every Level**
+- Query embedding cache (same query = same embedding)
+- Retrieval result cache (semantic cache for similar queries)
+- Response cache (final answer cache)
+- Expected total cache hit: 40-60%
+
+**5. Incremental Indexing**
+- Can't re-index 1B docs when new ones arrive
+- Append-only or delta indexing strategies
+- Periodic full re-index for optimization (monthly)
+- Handle eventual consistency gracefully
+
+**6. Cost at Scale:**
+
+| Component | Scale | Estimated Cost |
+|-----------|-------|---------------|
+| Vector storage (1B × 1024d) | ~4TB | $1,200/mo (cloud) |
+| Embedding generation | 50B chunks | $50K-$500K one-time |
+| Daily embedding updates | ~1M new chunks | $50-500/day |
+| Query infrastructure | 100K queries/day | $5K-$15K/mo |
+
+**Key Trade-offs:**
+- Recall vs Cost: 95% recall is 5-10x cheaper than 99%
+- Freshness vs Cost: real-time indexing is 10x more expensive than batch
+- Latency vs Recall: pre-filtering reduces recall but dramatically improves speed
+
+**Key insight:** At billion-scale, every architectural decision has massive cost implications. The difference between good and bad design is $10K/month vs $100K/month for the same quality.
+
+---
+
 ---
 
 [← Back to Main](../README.md) | [Next: Chunking Strategies →](./02-chunking-strategies.md)

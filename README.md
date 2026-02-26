@@ -7,7 +7,7 @@
 
 <!-- Badges -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-38bdf8.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![Questions](https://img.shields.io/badge/Questions-180+-818cf8.svg?style=for-the-badge)](./sections/)
+[![Questions](https://img.shields.io/badge/Questions-110+-818cf8.svg?style=for-the-badge)](./sections/)
 [![Sections](https://img.shields.io/badge/Sections-16-34d399.svg?style=for-the-badge)](./sections/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-fb7185.svg?style=for-the-badge)](http://makeapullrequest.com)
 [![Last Updated](https://img.shields.io/badge/Updated-Feb_2026-fbbf24.svg?style=for-the-badge)](#)
@@ -41,12 +41,12 @@
 <tr>
 <td align="center" width="25%">
 <a href="./sections/01-rag-systems.md"><img src="https://img.shields.io/badge/01-RAG_Systems-38bdf8?style=flat-square&labelColor=0f172a" alt="RAG Systems" width="180"/></a><br/>
-<sub><b>10 Questions</b> · Architecture, Self-RAG, Agentic RAG, debugging</sub><br/>
+<sub><b>13 Questions</b> · Architecture, Self-RAG, Agentic RAG, GraphRAG, Multimodal RAG</sub><br/>
 <sub>🟢🟡🔴⚫</sub>
 </td>
 <td align="center" width="25%">
 <a href="./sections/02-chunking-strategies.md"><img src="https://img.shields.io/badge/02-Chunking_Strategies-818cf8?style=flat-square&labelColor=0f172a" alt="Chunking Strategies" width="180"/></a><br/>
-<sub><b>7 Questions</b> · Fixed, recursive, semantic, parent-child</sub><br/>
+<sub><b>10 Questions</b> · Fixed, recursive, semantic, late chunking, LLM-based</sub><br/>
 <sub>🟢🟡🔴⚫</sub>
 </td>
 <td align="center" width="25%">

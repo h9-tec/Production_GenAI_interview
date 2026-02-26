@@ -190,6 +190,119 @@ Start fast and broad, progressively narrow and refine.
 
 ---
 
+### Intermediate Level
+
+#### Q4.5: What is SPLADE and how does it improve sparse retrieval over BM25?
+
+**Expected Answer:**
+
+**BM25's Limitation:**
+- BM25 only matches on exact terms present in the document
+- "car" doesn't match "automobile," "vehicle," or "transport"
+- This lexical gap is the primary weakness of keyword-based retrieval
+
+**What is SPLADE:**
+- SPLADE (Sparse Lexical and Expansion) is a learned sparse retrieval model
+- Uses a pretrained transformer to expand both queries and documents with related terms
+- Produces sparse vectors (like BM25's term-frequency vectors) but with learned term weights
+
+**How It Works:**
+1. Takes text through a transformer model (e.g., BERT/DistilBERT)
+2. Outputs a ~30,000-dimensional sparse vector where each dimension corresponds to a vocabulary term
+3. Non-zero values indicate the relevance/importance of that term
+4. Most values are zero (sparse), making it efficient to store and search
+
+**Key Advantage — Term Expansion:**
+- If a document says "car," SPLADE may add non-zero weights for "vehicle," "automobile," "transport," "driving"
+- If a query says "cheap flights," SPLADE may expand to include "affordable," "budget," "airfare"
+- This bridges the vocabulary gap that defeats BM25
+
+**Term Reduction:**
+- SPLADE also removes redundant or uninformative terms
+- Common words get their weights reduced
+- Produces cleaner, more discriminative sparse representations
+
+**Comparison with BM25:**
+
+| Aspect | BM25 | SPLADE |
+|--------|------|--------|
+| Term matching | Exact only | Exact + expanded |
+| Training | None (statistical) | Requires training data |
+| Inference | CPU-only | Requires GPU |
+| Interpretability | High | High (still sparse terms) |
+| Performance | Good baseline | Significantly better on most benchmarks |
+
+**In Hybrid Search:**
+- SPLADE can replace BM25 as the sparse component in hybrid retrieval
+- BM25 + dense is a good combination; SPLADE + dense is often better
+- Recent research (IBM, 2025): three-way retrieval (BM25 + dense + sparse/SPLADE) is the optimal combination for RAG
+
+**Trade-offs:**
+- SPLADE requires GPU inference (unlike BM25 which is CPU-only), making it more expensive to run
+- Requires training or a pretrained SPLADE model
+- Adds latency compared to BM25 (~20-50ms vs ~5-10ms for BM25)
+
+**Key insight:** SPLADE bridges the gap between keyword and semantic search. Consider it when BM25's exact-match limitation hurts your retrieval quality, but you still want the interpretability and efficiency of sparse retrieval.
+
+---
+
+### Advanced Level
+
+#### Q4.6: Compare bi-encoders vs cross-encoders for reranking. What are the trade-offs?
+
+**Expected Answer:**
+
+**Bi-Encoders:**
+- Encode query and document independently into separate embeddings
+- Compare via cosine similarity or dot product
+- Embeddings can be pre-computed for documents
+- Fast at inference: only need to embed the query, then compare against stored embeddings
+
+**Cross-Encoders:**
+- Encode query AND document together as a single input (concatenated)
+- Output a single relevance score (not an embedding)
+- Cannot pre-compute: must run the model for each query-document pair
+- Much more accurate because the model sees the full interaction between query and document terms
+
+**Why Cross-Encoders Are More Accurate:**
+- They see token-level interactions between query and document
+- Can detect nuanced relevance that independent encoding misses
+- Example: query "Python error handling best practices" and a document about "Java exception handling" — a bi-encoder might score this high (similar topics), but a cross-encoder can see the language mismatch
+
+**Speed Comparison:**
+
+| Operation | Bi-Encoder | Cross-Encoder |
+|-----------|-----------|---------------|
+| Score 10,000 documents | ~10ms (pre-computed) | ~20 seconds |
+| Score 100 documents | ~10ms (pre-computed) | ~200ms |
+| Score 20 documents | ~10ms (pre-computed) | ~40ms |
+| Can pre-compute docs? | Yes | No |
+
+**Production Pattern: Two-Stage Pipeline**
+1. **Stage 1 — Bi-encoder (retrieval):** embed the query, find top 100-500 candidates via ANN search. Fast because document embeddings are pre-computed.
+2. **Stage 2 — Cross-encoder (reranking):** score each of the top 20-100 candidates with the cross-encoder. Slow per-pair, but only applied to a small set.
+
+**ColBERT — The Middle Ground:**
+- Late interaction model: encodes query and document independently (like bi-encoder)
+- But preserves token-level embeddings (not compressed to single vector)
+- Compares at token level using MaxSim operation (richer than cosine)
+- Faster than cross-encoder (can partially pre-compute), more accurate than bi-encoder
+
+| Model Type | Speed | Accuracy | Pre-compute? |
+|-----------|-------|----------|-------------|
+| Bi-encoder | Very fast | Good | Yes (full) |
+| ColBERT | Fast | Very good | Yes (partial) |
+| Cross-encoder | Slow | Excellent | No |
+
+**Model Options:**
+- **Cross-encoder rerankers:** Cohere Rerank, BGE reranker, ms-marco-MiniLM-L-12-v2
+- **ColBERT:** ColBERTv2, PLAID (efficient ColBERT implementation)
+- **Bi-encoder:** Same as embedding models (e5, bge, OpenAI, etc.)
+
+**Key insight:** The bi-encoder to cross-encoder pipeline is the standard production pattern. Don't use cross-encoders as your first-stage retriever — they're too slow. Don't skip reranking if your retrieval precision needs improvement — cross-encoders provide a significant accuracy boost on the short list.
+
+---
+
 ---
 
 [← Previous: Embeddings & Vector Databases](./03-embeddings-vector-databases.md) | [← Back to Main](../README.md) | [Next: Semantic Caching →](./05-semantic-caching.md)

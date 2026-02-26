@@ -201,6 +201,147 @@ Invalidation:
 
 ---
 
+### Intermediate Level
+
+#### Q5.5: What are the risks of semantic caching? When can it go wrong?
+
+**Expected Answer:**
+
+**Risk 1: False Positives (Most Dangerous)**
+- Cache returns a wrong answer for a similar-but-different query
+- Example: "What's the refund policy for Product A?" returns cached answer for "What's the refund policy for Product B?"
+- The queries are semantically very similar but require completely different answers
+- Impact: users receive incorrect information, potentially causing real harm
+
+**Risk 2: Stale Responses**
+- Cached answer was correct when cached but underlying data has changed
+- Example: "What are the office hours?" returns last month's schedule after hours changed
+- Especially dangerous for time-sensitive information (prices, availability, policies)
+
+**Risk 3: Context Sensitivity**
+- Same question in different contexts should get different answers
+- "What's my account balance?" for different users must return different results
+- "What's our refund policy?" may differ by region, product, or customer tier
+- Semantic similarity between queries is high, but the required response is different
+
+**Risk 4: Threshold Sensitivity**
+- Small threshold changes can dramatically affect both hit rate AND error rate
+- At 0.90 threshold: 40% hit rate, 0.2% false-positive rate
+- At 0.85 threshold: 60% hit rate, 2.5% false-positive rate
+- A 5-point threshold change can increase errors by 10x
+
+**Risk 5: Privacy Leakage**
+- User A's cached query/response might be served to User B if not properly isolated
+- Particularly dangerous for personal, financial, or health-related queries
+- Even anonymized queries can leak information through cached responses
+
+**Mitigation Strategies:**
+
+| Risk | Mitigation |
+|------|-----------|
+| False positives | Per-entity cache keys (include product/topic in key) |
+| Stale responses | TTL + document-triggered invalidation |
+| Context sensitivity | Per-user or per-session cache isolation |
+| Threshold sensitivity | Start conservative (0.92+), lower gradually with monitoring |
+| Privacy leakage | Strict tenant/user isolation, never share caches across users |
+
+**Additional Mitigations:**
+- Combine exact-match + semantic caching (exact-match first — it's always safe)
+- Monitor false-positive rate continuously using user feedback signals
+- Implement cache bypass for sensitive query categories (medical, legal, financial)
+- Log cache hits with similarity scores for post-hoc auditing
+
+**Key insight:** Semantic caching trades accuracy for speed and cost. The risk of a false positive (wrong cached answer) must be weighed against the benefit. For medical/legal applications, use very high thresholds or skip semantic caching entirely.
+
+---
+
+### Expert Level
+
+#### Q5.6: Design a cache warming strategy for a government service expecting a traffic spike during Ramadan.
+
+**Expected Answer:**
+
+**Context:**
+- Government service in MENA region (e.g., citizen services portal)
+- Normal traffic: ~50K daily users
+- Ramadan traffic: ~200K daily users (4x spike)
+- Predictable timing: Ramadan dates known months in advance
+- Query patterns: prayer times, service availability, holiday schedules, regulation questions
+
+**Phase 1: Analysis (4-6 weeks before Ramadan)**
+
+1. **Study Last Year's Ramadan Query Logs**
+   - Identify top 100 queries by frequency
+   - Categorize by topic: prayer times, service hours, holiday regulations, benefits, permits
+   - Identify daily patterns (queries spike after Iftar, before Fajr)
+
+2. **Identify Query Clusters**
+   - Group semantically similar queries
+   - Map dialect variations to canonical queries
+   - Estimate coverage: top 100 clusters typically cover 60-70% of traffic
+
+**Phase 2: Pre-Warming (1-2 weeks before Ramadan)**
+
+1. **Generate Responses for Top Queries**
+   - Run top 100-200 query clusters through the full RAG pipeline
+   - Verify response quality with human review
+   - Store as high-confidence cache entries
+
+2. **Pre-Compute Embeddings for Likely Queries**
+   - Generate embeddings for all known query variations
+   - Include dialect variations (Saudi, Egyptian, Gulf, Levantine phrasing)
+   - Example: "prayer times" in MSA, Saudi dialect, Egyptian dialect all pre-embedded
+
+3. **Load Cache with Verified Entries**
+   - Pre-populate Redis/cache layer with verified Q&A pairs
+   - Set appropriate TTL per category (prayer times: 12hr, regulations: 7 days)
+
+**Phase 3: Dynamic Warming (During Ramadan)**
+
+1. **Real-Time Trend Detection**
+   - Analyze trending queries every hour
+   - Detect emerging patterns not in historical data
+   - Pro-actively cache responses for new trending queries
+
+2. **Adaptive TTL Management**
+   - Prayer times: refresh every 12 hours (times change daily)
+   - Service hours: refresh weekly or on change
+   - Regulations: longer TTL (stable information)
+   - Breaking announcements: immediate cache, short TTL
+
+**Phase 4: Dialect Handling**
+
+- Pre-warm with variations across major Arabic dialects
+- Saudi: specific government terminology and phrasing
+- Egyptian: common alternative phrasings
+- Gulf: regional variations
+- Levantine: additional variations for expatriate users
+- Use dialect-aware embedding model for cache matching
+
+**Phase 5: Capacity Planning**
+
+- Size Redis cluster for 200K users at peak
+- Estimate: 70% cache hit rate target = 140K cached responses per day
+- Storage: ~500 bytes per cache entry x 50K unique entries = ~25MB (trivial)
+- Compute: size for 60K cache misses per day at peak (LLM backend)
+- Auto-scaling: configure LLM backend to scale from 2 to 8 instances
+
+**Fallback Strategy:**
+- If cache misses spike unexpectedly, auto-scale LLM backend
+- Serve slightly stale responses during extreme peaks (better than timeouts)
+- Queue non-urgent queries during peak hours
+- Static fallback pages for most common queries if system overloads
+
+**Expected Results (Based on Similar MENA Deployments):**
+- 94% cache hit rate during peak hours
+- 70% GPU cost reduction compared to uncached
+- <2s response time (down from 8s without caching)
+- Smooth handling of 4x traffic spike without degradation
+
+**Key insight:** Predictable traffic spikes are a gift — use historical data to pre-warm caches and handle peaks gracefully. The combination of pre-warming, dialect awareness, and dynamic adaptation turns a potential system failure into a smooth user experience.
+
+---
+
 ---
 
 [← Previous: Hybrid Search & Reranking](./04-hybrid-search-reranking.md) | [← Back to Main](../README.md) | [Next: Multi-Agent Systems →](./06-multi-agent-systems.md)

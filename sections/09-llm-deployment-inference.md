@@ -204,6 +204,229 @@ LLM inference is memory-bandwidth bound, not compute bound.
 
 ---
 
+### Fresh Level
+
+#### Q9.5: What is the difference between batch inference and real-time inference? When do you use each?
+
+**Expected Answer:**
+
+**Real-Time Inference:**
+- Process one request at a time (or small batch)
+- Response in milliseconds to seconds
+- User is waiting for the response
+- Examples: chatbot, search, real-time translation
+
+**Batch Inference:**
+- Process many requests at once (hundreds to millions)
+- Response in minutes to hours
+- No user waiting — results stored for later use
+- Examples: document classification, embedding generation, content moderation backlog
+
+**Comparison:**
+
+| Aspect | Real-Time | Batch |
+|--------|-----------|-------|
+| Latency | <3 seconds | Minutes to hours |
+| Throughput | Lower | Much higher |
+| Cost per query | Higher | 50-90% cheaper |
+| GPU utilization | Variable (idle between requests) | Very high (continuous) |
+| User experience | Interactive | Background processing |
+| Scaling | Auto-scale with traffic | Fixed capacity, scheduled |
+
+**Cost Savings with Batch:**
+- OpenAI Batch API: 50% discount
+- Self-hosted: 3-5x higher throughput (full GPU utilization)
+- No wasted compute on idle time
+
+**When to Use Batch:**
+- Embedding generation for new documents
+- Bulk classification or tagging
+- Evaluation runs
+- Data enrichment pipelines
+- Report generation
+
+**When to Use Real-Time:**
+- User-facing chat/Q&A
+- Search and retrieval
+- Real-time content moderation
+- Interactive applications
+
+**Hybrid Approach:**
+Many production systems use both:
+- Real-time for user interactions
+- Batch for background processing (nightly re-embedding, weekly evaluation)
+
+**Key insight:** If the user isn't waiting, use batch. It's 2-5x cheaper and lets you fully utilize your GPU.
+
+---
+
+### Intermediate Level
+
+#### Q9.6: What is speculative decoding and how does it speed up LLM inference?
+
+**Expected Answer:**
+
+**The Problem:**
+LLM inference is sequential — each token depends on the previous one. Can't parallelize the generation itself.
+
+**How Speculative Decoding Works:**
+
+1. **Draft Phase:** Small, fast model (draft model) generates K candidate tokens quickly
+2. **Verification Phase:** Large, accurate model (target model) verifies ALL K tokens in a single forward pass
+3. **Accept/Reject:** Accept tokens where draft matches target, reject and resample from target where they differ
+4. **Result:** Multiple tokens per large model forward pass instead of one
+
+**Why It Works:**
+- Large model verification of K tokens takes almost the same time as generating 1 token
+- For "easy" tokens (articles, common words), draft model matches target 70-90% of the time
+- Only "hard" tokens (factual, reasoning) require target model generation
+- Net result: 2-3x speedup with zero quality loss
+
+**Key Property:**
+Speculative decoding is **mathematically equivalent** to standard decoding — the output distribution is identical. It's not an approximation — it's a speed optimization with no quality trade-off.
+
+**Requirements:**
+- Draft model must be much smaller (3-10x) than target model
+- Draft model should be from same family or fine-tuned on similar data
+- Example: Llama-7B as draft for Llama-70B
+
+**Performance:**
+
+| Scenario | Speedup | Acceptance Rate |
+|----------|---------|-----------------|
+| Code generation | 2-3x | 70-80% |
+| Creative writing | 1.5-2x | 60-70% |
+| Technical Q&A | 2-2.5x | 65-75% |
+
+**Limitations:**
+- Requires running two models simultaneously (memory for both)
+- Speedup depends on acceptance rate (domain-dependent)
+- Not all inference engines support it yet
+
+**Key insight:** Speculative decoding gives you free speed with no quality loss. If you're running self-hosted inference, this should be one of your first optimizations.
+
+---
+
+### Advanced Level
+
+#### Q9.7: What is SGLang and how does it compare to vLLM for structured output workloads?
+
+**Expected Answer:**
+
+**SGLang Overview:**
+SGLang (Structured Generation Language) is an inference framework optimized for structured LLM outputs (JSON, code, constrained generation).
+
+**Key Innovation: RadixAttention**
+- Reuses KV-cache across requests that share common prefixes
+- Particularly powerful for structured generation where multiple outputs share the same prompt/schema
+- Achieves up to 6.4x higher throughput on structured workloads
+
+**Comparison with vLLM:**
+
+| Aspect | vLLM | SGLang |
+|--------|------|--------|
+| Primary focus | General-purpose high throughput | Structured output optimization |
+| KV-cache | PagedAttention | RadixAttention (prefix reuse) |
+| Best for | High-concurrency general chat | JSON/structured output, batch |
+| Throughput (general) | Excellent | Good |
+| Throughput (structured) | Good | Up to 6.4x better |
+| Latency (structured) | Good | Up to 3.7x lower |
+| Maturity | Very mature | Growing rapidly |
+| Community | Large | Medium |
+
+**When to Use SGLang:**
+- Heavy structured output workloads (JSON APIs, data extraction)
+- Workloads with prefix reuse (same system prompt, many queries)
+- Batch processing with shared prompt templates
+- Constrained generation (regex, grammar-guided)
+
+**When to Use vLLM:**
+- General-purpose chat/completions
+- High-concurrency interactive workloads
+- Maximum ecosystem compatibility
+- When stability and maturity matter most
+
+**Production Consideration:**
+You can use both — SGLang for batch/structured workloads, vLLM for real-time interactive workloads. They serve different optimization profiles.
+
+**Key insight:** SGLang shines when you have structured output patterns. If your primary workload is JSON generation or template-based completions, SGLang can give you 3-6x better performance than general-purpose frameworks.
+
+---
+
+### Expert Level
+
+#### Q9.8: How do you right-size GPU infrastructure for LLM inference? Walk through the capacity planning.
+
+**Expected Answer:**
+
+**Step 1: Model Memory Requirements**
+
+```
+Model memory = Parameters × Bytes per parameter
+              + KV-cache per request × Max concurrent requests
+              + Activation memory overhead (~10-20%)
+```
+
+**Example: Llama-70B in FP16**
+- Model weights: 70B × 2 bytes = 140GB
+- KV-cache per request: ~1-2GB (varies by sequence length)
+- For 32 concurrent requests: 140GB + 48GB = 188GB
+- Needs: 3× A100-80GB or 2× H100-80GB
+
+**Step 2: Throughput Calculation**
+
+| Quantization | Memory | Tokens/sec (A100) | Quality |
+|-------------|--------|-------------------|---------|
+| FP16 | 140GB | 30-50 t/s | Best |
+| INT8 | 70GB | 50-80 t/s | ~99% of FP16 |
+| INT4 (GPTQ) | 35GB | 80-120 t/s | ~95-97% of FP16 |
+
+**Step 3: Requests per Second**
+
+```
+Requests/sec = (Tokens/sec × Batch size) / Average output tokens per request
+
+Example:
+- INT4 on A100: 100 tokens/sec with batch=16
+- Average response: 200 tokens
+- Throughput: (100 × 16) / 200 = 8 requests/sec per GPU
+```
+
+**Step 4: Match to Traffic**
+
+```
+Required GPUs = Peak requests/sec / Throughput per GPU × Safety factor
+
+Example:
+- Peak: 50 requests/sec
+- Throughput: 8 req/s per GPU
+- Safety factor: 1.5x (for spikes)
+- Required: 50 / 8 × 1.5 = ~10 GPUs
+```
+
+**Step 5: Cost Optimization**
+
+| Strategy | Savings | Trade-off |
+|----------|---------|-----------|
+| Quantization (INT4) | 2-4x less GPUs | 3-5% quality loss |
+| Spot instances | 60-70% cost savings | Interruption risk |
+| Auto-scaling | Only pay for what you use | Cold start latency |
+| Batch processing off-peak | Better utilization | Delayed results |
+| Speculative decoding | 2-3x throughput | Need draft model memory |
+
+**GPU Selection Guide:**
+
+| GPU | VRAM | Best For | Cloud Cost/hr |
+|-----|------|----------|---------------|
+| A10G | 24GB | 7B models, INT4 13B | $1.00 |
+| A100 40GB | 40GB | 13B FP16, 70B INT4 | $3.50 |
+| A100 80GB | 80GB | 70B FP16 (with TP) | $5.00 |
+| H100 80GB | 80GB | 70B FP16, fastest | $8.00 |
+
+**Key insight:** Start with quantized models on the smallest GPU that fits. Quantization is the single biggest lever — it can reduce GPU requirements by 4x with minimal quality loss. Only scale up when quality evaluation shows you need it.
+
+---
+
 ---
 
 [← Previous: Arabic NLP Challenges](./08-arabic-nlp-challenges.md) | [← Back to Main](../README.md) | [Next: Fine-tuning →](./10-fine-tuning.md)

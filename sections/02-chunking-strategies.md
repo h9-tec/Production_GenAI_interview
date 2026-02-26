@@ -246,6 +246,166 @@ Legal documents have specific structural requirements that naive chunking destro
 
 ---
 
+### Intermediate Level
+
+#### Q2.8: What is Late Chunking and how does it differ from traditional approaches?
+
+**Expected Answer:**
+
+**Traditional Chunking Flow:**
+```
+Document → Split into chunks → Embed each chunk independently
+```
+Each chunk is embedded WITHOUT awareness of surrounding content. Context is lost at boundaries.
+
+**Late Chunking Flow:**
+```
+Document → Process ENTIRE document through embedding model → Apply chunk boundaries → Create chunk embeddings
+```
+Each chunk embedding retains awareness of the full document context.
+
+**Why It Matters:**
+- Traditional: chunk about "the policy" doesn't know WHICH policy (context was in previous chunk)
+- Late chunking: chunk retains understanding of document context even though it's split
+
+**Comparison with Related Approaches:**
+
+| Approach | How It Works | Quality | Cost |
+|----------|-------------|---------|------|
+| Traditional chunking | Chunk → Embed independently | Baseline | Low |
+| Contextual retrieval (Anthropic) | Add context summaries to chunks before embedding | Better | Medium (LLM calls) |
+| Late chunking | Embed full document → then split | Best context retention | High (long document processing) |
+
+**When to Use Late Chunking:**
+- High-value documents where context preservation is critical
+- Documents with many internal cross-references
+- Technical or legal content where terms are defined once and used throughout
+
+**When NOT to Use:**
+- Simple, self-contained documents (paragraphs stand alone)
+- Very large documents exceeding model context window
+- High-volume processing where compute cost matters
+
+**Trade-off:** Late chunking requires processing full documents through the embedding model — significantly more compute per document, but better retrieval quality.
+
+**Key insight:** Late chunking addresses the fundamental problem that independent chunk embeddings lose document context. It's one of the most impactful recent advances in RAG retrieval quality.
+
+---
+
+### Advanced Level
+
+#### Q2.9: What is LLM-based chunking and when is it worth the cost?
+
+**Expected Answer:**
+
+**What It Is:**
+Using a language model to analyze document structure and decide where to split, instead of following fixed rules or embedding similarity.
+
+**How It Works:**
+1. Feed document (or sections) to LLM
+2. LLM analyzes content structure, topic boundaries, and semantic coherence
+3. LLM outputs chunk boundaries and optionally chunk summaries
+4. Application splits document at LLM-recommended boundaries
+
+**Advantages:**
+- Best semantic coherence — chunks are truly self-contained topics
+- Handles complex documents (mixed formats, nested structures, tables within text)
+- Can generate chunk summaries for better retrieval
+- Understands nuances that rule-based approaches miss
+
+**Disadvantages:**
+- Expensive: $0.01-$0.10 per 10K-word document
+- Slow: multiple LLM calls per document
+- Non-deterministic: same document may chunk differently each time
+- Not scalable for large corpora
+
+**Cost Analysis:**
+
+| Corpus Size | Cost at $0.05/doc | Time (parallel) |
+|-------------|-------------------|-----------------|
+| 1K documents | $50 | Minutes |
+| 10K documents | $500 | Hours |
+| 100K documents | $5,000 | Days |
+| 1M documents | $50,000 | Weeks |
+
+**When Worth It:**
+- High-value documents (legal contracts, medical records)
+- Small corpus (<10K docs) where accuracy is paramount
+- Complex mixed-format documents
+- Initial setup where you want the best possible chunking
+
+**When NOT Worth It:**
+- Large corpus (>100K docs) — cost prohibitive
+- Frequently changing documents — must re-chunk on every change
+- Budget-constrained projects
+- Simple, well-structured documents
+
+**Practical Alternative:**
+Use LLM-based chunking on a representative sample (100-500 docs) to LEARN patterns, then create rules that can be applied at scale with traditional methods.
+
+**Key insight:** LLM-based chunking is not for production-scale processing. Use it strategically on high-value content or as a learning tool to create better rules.
+
+---
+
+### Expert Level
+
+#### Q2.10: How do you evaluate chunking quality? What metrics actually matter?
+
+**Expected Answer:**
+
+**The Key Principle:**
+Chunking quality should be measured by DOWNSTREAM impact, not by how "nice" the chunks look.
+
+**Direct Chunking Metrics (Less Useful):**
+
+| Metric | What It Measures | Limitation |
+|--------|-----------------|------------|
+| Semantic coherence | Does each chunk cover one topic? | Doesn't guarantee retrieval quality |
+| Boundary quality | Splits at natural boundaries? | Subjective, hard to measure |
+| Size distribution | Consistent chunk sizes? | Not directly related to quality |
+| Information completeness | No critical info split? | Hard to measure automatically |
+
+**Downstream Metrics (Most Important):**
+
+| Metric | What It Measures | How to Evaluate |
+|--------|-----------------|-----------------|
+| Retrieval Recall@5 | Are relevant chunks in top 5? | Golden dataset with labeled chunks |
+| Context Relevance | Is retrieved context useful? | RAGAS metric on test queries |
+| Faithfulness | Is answer grounded in context? | RAGAS metric on test queries |
+| Chunk Utilization | How much retrieved context is actually used? | Compare context vs answer |
+| Answer Correctness | Is the final answer right? | Golden dataset comparison |
+
+**Evaluation Methodology:**
+
+**Step 1:** Create golden Q&A pairs (200+ queries with expected answers and source documents)
+
+**Step 2:** Test multiple chunking strategies on SAME corpus:
+- Fixed-size (256, 512, 1024 tokens)
+- Recursive with overlap
+- Semantic chunking
+- Domain-specific (if applicable)
+
+**Step 3:** For each strategy, measure end-to-end RAG metrics:
+- Retrieval recall@5/10
+- Faithfulness
+- Answer correctness
+
+**Step 4:** Choose strategy with best downstream performance
+
+**Step 5:** A/B test in production:
+- Deploy two strategies
+- Measure user satisfaction and quality metrics on live traffic
+- Choose winner based on real-world performance
+
+**Common Finding:** The "best" chunking strategy varies by:
+- Document type (structured vs unstructured)
+- Query type (specific vs exploratory)
+- Domain (legal vs support tickets vs technical)
+
+**Key insight:** The best chunking strategy is the one that produces the best end-to-end RAG results on YOUR data, not the one that scores highest on theoretical metrics.
+
+---
+
 ---
 
 [← Previous: RAG Systems](./01-rag-systems.md) | [← Back to Main](../README.md) | [Next: Embeddings & Vector Databases →](./03-embeddings-vector-databases.md)

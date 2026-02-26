@@ -260,6 +260,118 @@
 
 ---
 
+### Intermediate Level
+
+#### Q3.7: How do you choose the right embedding model for your use case?
+
+**Expected Answer:**
+
+**Key Evaluation Criteria:**
+
+| Criterion | Why It Matters | How to Evaluate |
+|-----------|---------------|-----------------|
+| Domain performance | General benchmarks ≠ your domain | Test on YOUR data |
+| Dimensions | Storage, speed, quality trade-off | Compare 384 vs 768 vs 1024 |
+| Max input length | Longer = more context per chunk | Match to your chunk sizes |
+| Multilingual | Arabic/multi-language support? | Test on each target language |
+| Cost | API vs self-hosted | Calculate at your query volume |
+| Latency | Embedding generation speed | Benchmark at your batch size |
+
+**Model Categories:**
+
+| Category | Examples | Pros | Cons |
+|----------|---------|------|------|
+| API-based | OpenAI, Cohere, Voyage | Easy, high quality | Cost per token, vendor lock-in |
+| Open-source large | e5-large, bge-large, GTE | Free, self-hosted | Need GPU, maintenance |
+| Open-source small | e5-small, bge-small, nomic | Fast, cheap | Lower quality |
+| Domain-specific | Legal-BERT, BioMedBERT | Best for domain | Narrow scope |
+
+**Evaluation Workflow:**
+1. Select 3-5 candidate models
+2. Embed a representative sample of YOUR documents (1000+ chunks)
+3. Create test queries (200+) with known relevant documents
+4. Measure Recall@5, Recall@10 for each model
+5. Measure embedding generation latency and cost
+6. Choose best quality/cost trade-off
+
+**Matryoshka Embeddings:**
+Some models (e.g., nomic-embed-text) support variable dimensions — use 256 dims for fast initial filtering, 768 for precise final ranking. Same model, different precision levels.
+
+**Cost Comparison (at 100M tokens):**
+- OpenAI text-embedding-3-small: $2
+- Cohere embed-v3: $10
+- Self-hosted e5-large (A100): ~$0.50 (after GPU amortization)
+- Self-hosted e5-small (CPU): ~$0.10
+
+**Red Flag:** Candidate chooses embedding model based on MTEB leaderboard alone without testing on their domain.
+
+**Key insight:** Never choose an embedding model based on benchmarks alone. A model ranked #20 on MTEB might be #1 on your specific domain data.
+
+---
+
+### Expert Level
+
+#### Q3.8: What is embedding drift and how do you manage it in production?
+
+**Expected Answer:**
+
+**What is Embedding Drift:**
+Over time, the distribution and quality of your embeddings changes, causing gradual degradation in retrieval quality.
+
+**Types of Drift:**
+
+**1. Data Drift**
+- New documents have different characteristics than original corpus
+- New topics, vocabulary, writing styles enter the knowledge base
+- Existing embeddings become less representative of the full corpus
+- Impact: new content may be poorly represented in vector space
+
+**2. Model Drift**
+- Embedding model provider releases updates (even minor versions)
+- Updated model produces slightly different vector spaces
+- Old embeddings become incompatible with new model's outputs
+- Impact: query embeddings (new model) don't match document embeddings (old model)
+
+**3. Query Drift**
+- User query patterns evolve over time
+- New topics, terminology, and question styles emerge
+- May fall into poorly represented regions of embedding space
+- Impact: retrieval quality degrades for new query patterns
+
+**Detection Methods:**
+
+| Method | What It Detects | How Often |
+|--------|----------------|-----------|
+| Retrieval quality monitoring | All drift types | Daily |
+| Embedding space visualization | Data drift, model drift | Weekly |
+| Cosine similarity distributions | Model drift | On model updates |
+| Low-confidence query tracking | Query drift | Continuous |
+| Golden dataset re-evaluation | Overall degradation | Weekly |
+
+**Handling Model Updates (Most Critical):**
+- If you swap embedding models, you MUST re-embed your entire corpus
+- Cannot mix old and new embeddings in the same index
+- Blue-green deployment: build new index while old serves traffic
+- Switch when new index is ready and validated
+
+**Re-indexing Strategy:**
+```
+1. Build new index with new model (background job)
+2. Run evaluation against golden dataset
+3. If quality improves → switch traffic to new index
+4. Keep old index as rollback for 1 week
+5. Decommission old index
+```
+
+**Cost of Re-indexing (example):**
+- 10M documents × 1K tokens avg × $0.02/M tokens = $200
+- Plus compute time: 2-5 days on moderate GPU
+- Must be budgeted as ongoing operational cost
+
+**Key insight:** Treat your embedding model as a long-term infrastructure commitment. Budget for periodic re-indexing and monitor drift continuously.
+
+---
+
 ---
 
 [← Previous: Chunking Strategies](./02-chunking-strategies.md) | [← Back to Main](../README.md) | [Next: Hybrid Search & Reranking →](./04-hybrid-search-reranking.md)
